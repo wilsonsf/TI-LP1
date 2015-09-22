@@ -1,0 +1,1 @@
+Ambos os algoritmos recursivos utilizados foram do com recursão de cauda, onde a chamada da função recursiva ocorre no retorno da mesma, sem nenhum tipo de operação.

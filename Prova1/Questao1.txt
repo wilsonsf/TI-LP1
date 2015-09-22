@@ -1,0 +1,3 @@
+Em uma sub-rotina recursiva, a alocação de memória ocorre como na estrutura de dados Pilha.
+A cada nova chamada da função é alocado seu espaço fixo de memória correspondente as variáveis locais estáticas, ao final da rotina, quando é encontrada a condição de saída, a sub-rotina chega a seu fim e a memória é desalocada do topo pro fundo.
+Em geral, usa-se rotinas recursivas para facilitar na solução de um algoritmo, visto que algumas dessas abordagens são de natureza recursiva, porém o uso desse tipo de algoritmo pode gerar um estouro de memória muito mais rápido, pois o uso de memória cresce rapidamente.

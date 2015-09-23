@@ -9,8 +9,11 @@
 
  */ 
 
+// Linha de compilação: g++ main.cpp somaMatrizes.cpp -o teste
+
 #include <iostream>
 #include <iomanip>
+#include "somaMatrizes.h"
 
 int main () {
 
@@ -24,28 +27,14 @@ int main () {
     std::cin >> colunas;
 
     // Alocação
-    matrizA = new double* [linhas];
-    matrizB = new double* [linhas];
-    matrizSoma = new double* [linhas];
+    matrizA = allocaMatriz(linhas,colunas);
+    matrizB = allocaMatriz(linhas,colunas);
+    matrizSoma = allocaMatriz(linhas,colunas);
 
-    if (!matrizA || !matrizB || !matrizSoma) {
+
+    if (!matrizEstaAlocada(matrizA) || !matrizEstaAlocada(matrizB) 
+        || !matrizEstaAlocada(matrizSoma)) {
         std::cout << "Erro na alocação das matrizes..." << std::endl;
-    } else {
-        std::cout << "Alocando colunas... ";
-        bool alocacaoFalhou = false;
-        for (int i = 0; i < colunas; i++) {
-            std::cout << i << ( i != colunas-1 ? ", " : "\n" );
-            matrizA[i] = new double[colunas];
-            matrizB[i] = new double[colunas];
-            matrizSoma[i] = new double[colunas];
-            if (!matrizA[i] || !matrizB[i] || !matrizSoma[i]) {
-                alocacaoFalhou = true;
-                break;
-            }
-        }
-
-        if (alocacaoFalhou) {
-            std::cout << "Erro na alocação das matrizes..." << std::endl;
         } else {
 
             // Leitura
@@ -85,7 +74,6 @@ int main () {
             if (matrizSoma[i])
                 delete matrizSoma[i];
         }
-    }
 
     if (matrizA)
         delete matrizA;

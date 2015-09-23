@@ -9,7 +9,15 @@
  
  * Além disso, antes de finalizar o programa, deve-se liberar a área de memória
  * alocada.
+
+    Desenvolvido por Wilson de Farias
+    Disciplina: Linguagem de Programação 1
+    Curso: Bacharelado em Tecnologia da Informação
+    Data: 22/09/2015
+
  */ 
+
+// Linha de compilação: g++ main.cpp -o teste
 
 #include <iostream>
 //#include "exercicio1.h"

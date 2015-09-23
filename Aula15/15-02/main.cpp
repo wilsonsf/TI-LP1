@@ -6,7 +6,14 @@
  * Obs: note que não deve ocorrer desperdício de memória, e após a utilização
  * da memória, ela deve ser liberada.
 
+    Desenvolvido por Wilson de Farias
+    Disciplina: Linguagem de Programação 1
+    Curso: Bacharelado em Tecnologia da Informação
+    Data: 22/09/2015
+
  */ 
+
+// Linha de compilação: g++ main.cpp -o teste
 
 #include <iostream>
 #include <iomanip>

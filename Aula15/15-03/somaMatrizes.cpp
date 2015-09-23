@@ -28,4 +28,11 @@ bool matrizEstaAlocada(double ** matriz){
     }
 }
 
+void leituraDaMatriz(double **matriz, int linhas, int colunas) {
+    for (int i = 0; i < linhas; i ++) {
+        for (int j = 0; j < colunas; j++) {
+            std::cout << "Elemento [" << i+1 << "][" << j+1 << "]: ";
+            std::cin >> matriz[i][j];
+        }
+    }
 }

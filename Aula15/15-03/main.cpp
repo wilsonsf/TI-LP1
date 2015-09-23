@@ -32,48 +32,37 @@ int main () {
     matrizSoma = allocaMatriz(linhas,colunas);
 
 
-    if (!matrizEstaAlocada(matrizA) || !matrizEstaAlocada(matrizB) 
-        || !matrizEstaAlocada(matrizSoma)) {
+    if (!matrizEstaAlocada(matrizA) || !matrizEstaAlocada(matrizB) || 
+                    !matrizEstaAlocada(matrizSoma)) {
         std::cout << "Erro na alocação das matrizes..." << std::endl;
-        } else {
+    } else {
 
-            // Leitura
-            std::cout << "Preenchendo Matriz A: " << std::endl;
-            for (int i = 0; i < linhas; i ++) {
-                for (int j = 0; j < colunas; j++) {
-                    std::cout << "Elemento [" << i+1 << "][" << j+1 << "]: ";
-                    std::cin >> matrizA[i][j];
-                }
-            }
+        // Leitura
+        std::cout << "Preenchendo Matriz A: " << std::endl;
+        leituraDaMatriz(matrizA, linhas, colunas);
 
-            std::cout << "Preenchendo Matriz B: " << std::endl;
-            for (int i = 0; i < linhas; i ++) {
-                for (int j = 0; j < colunas; j++) {
-                    std::cout << "Elemento [" << i+1 << "][" << j+1 << "]: ";
-                    std::cin >> matrizB[i][j];
-                }
-            }
+        std::cout << "Preenchendo Matriz B: " << std::endl;
+        leituraDaMatriz(matrizB, linhas, colunas);
 
-            // Soma
-            for (int i = 0; i < linhas; i ++) {
-                for (int j = 0; j < colunas; j++) {
-                    //std::cout << "Elemento [" << i+1 << "][" << j+1 << "]: ";
-                    matrizSoma[i][j] = matrizA[i][j] + matrizB[i][j];
-                    std::cout << std::setw(5) << matrizSoma[i][j];
-                }
-                std::cout << std::endl;
+        // Soma
+        for (int i = 0; i < linhas; i ++) {
+            for (int j = 0; j < colunas; j++) {
+                matrizSoma[i][j] = matrizA[i][j] + matrizB[i][j];
+                std::cout << std::setw(5) << matrizSoma[i][j];
             }
+            std::cout << std::endl;
         }
+    }
 
-        // Liberação
-        for (int i = 0; i < colunas; i++) {
-            if (matrizA[i])
-                delete matrizA[i];
-            if (matrizB[i])
-                delete matrizB[i];
-            if (matrizSoma[i])
-                delete matrizSoma[i];
-        }
+    // Liberação
+    for (int i = 0; i < colunas; i++) {
+        if (matrizA[i])
+            delete matrizA[i];
+        if (matrizB[i])
+            delete matrizB[i];
+        if (matrizSoma[i])
+            delete matrizSoma[i];
+    }
 
     if (matrizA)
         delete matrizA;

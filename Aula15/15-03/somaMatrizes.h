@@ -3,5 +3,6 @@
 
 double ** allocaMatriz(int linhas, int colunas);
 bool matrizEstaAlocada(double ** matriz);
+void leituraDaMatriz(double **matriz, int linhas, int colunas);
 
 #endif

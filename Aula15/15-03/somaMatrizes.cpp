@@ -51,13 +51,26 @@ double ** somaMatrizes(double **matrizA, double **matrizB, int linhas,
     return matrizSoma;
 }
 
-void liberaMatriz(double **matriz, int linhas) {
+void imprimeMatriz(double **matriz, int linhas, int colunas) {
     for (int i = 0; i < linhas; i++) {
-        if (matriz[i])
-            delete matriz[i];
+        std::cout << "| ";
+        for (int j = 0; j < colunas; j++) {
+            std::cout << std::setw(5) << matriz[i][j] 
+                      << " ";
+        }
+        std::cout << "|" << std::endl;
     }
 
+}
+
+void liberaMatriz(double **matriz, int linhas) {
     if (matriz) {
+        for (int i = 0; i < linhas; i++) {
+            if (matriz[i]) {
+                delete matriz[i];
+            }
+        }
+        
         delete matriz;
     }
 }

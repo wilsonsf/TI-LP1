@@ -12,7 +12,6 @@
 // Linha de compilação: g++ main.cpp somaMatrizes.cpp -o teste
 
 #include <iostream>
-#include <iomanip>
 #include "somaMatrizes.h"
 
 int main () {
@@ -44,6 +43,13 @@ int main () {
 
         // Soma
         matrizSoma = somaMatrizes(matrizA, matrizB, linhas, colunas);
+
+        std::cout << "\nMatriz A:" << std::endl;
+        imprimeMatriz(matrizA, linhas, colunas);
+        std::cout << "\nMatriz B:" << std::endl;
+        imprimeMatriz(matrizB, linhas, colunas);
+        std::cout << "\nMatriz A+B:" << std::endl;
+        imprimeMatriz(matrizSoma, linhas, colunas);
     }
 
     // Liberação

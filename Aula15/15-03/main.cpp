@@ -29,8 +29,6 @@ int main () {
     // Alocação
     matrizA = allocaMatriz(linhas,colunas);
     matrizB = allocaMatriz(linhas,colunas);
-    matrizSoma = allocaMatriz(linhas,colunas);
-
 
     if (!matrizEstaAlocada(matrizA) || !matrizEstaAlocada(matrizB) || 
                     !matrizEstaAlocada(matrizSoma)) {
@@ -45,17 +43,11 @@ int main () {
         leituraDaMatriz(matrizB, linhas, colunas);
 
         // Soma
-        for (int i = 0; i < linhas; i ++) {
-            for (int j = 0; j < colunas; j++) {
-                matrizSoma[i][j] = matrizA[i][j] + matrizB[i][j];
-                std::cout << std::setw(5) << matrizSoma[i][j];
-            }
-            std::cout << std::endl;
-        }
+        matrizSoma = somaMatrizes(matrizA, matrizB, linhas, colunas);
     }
 
     // Liberação
-    for (int i = 0; i < colunas; i++) {
+    for (int i = 0; i < linhas; i++) {
         if (matrizA[i])
             delete matrizA[i];
         if (matrizB[i])

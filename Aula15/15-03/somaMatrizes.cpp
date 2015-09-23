@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "somaMatrizes.h"
 
 double ** allocaMatriz(int linhas, int colunas) {
@@ -9,7 +10,7 @@ double ** allocaMatriz(int linhas, int colunas) {
         return NULL;
     }
     else {
-        for (int i = 0; i < colunas; i++) {
+        for (int i = 0; i < linhas; i++) {
             matriz[i] = new double[colunas];
             if (!matriz[i]) {
                 return NULL;
@@ -35,4 +36,16 @@ void leituraDaMatriz(double **matriz, int linhas, int colunas) {
             std::cin >> matriz[i][j];
         }
     }
+}
+double ** somaMatrizes(double** matrizA, double** matrizB, int linhas, 
+                       int colunas){
+
+    double** matrizSoma = allocaMatriz(linhas,colunas);
+    
+    for (int i = 0; i < linhas; i ++) {
+        for (int j = 0; j < colunas; j++) {
+            matrizSoma[i][j] = matrizA[i][j] + matrizB[i][j];
+        }
+    }
+    return matrizSoma;
 }

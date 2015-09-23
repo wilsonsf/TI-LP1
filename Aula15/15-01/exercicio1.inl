@@ -10,10 +10,14 @@ void preencheArranjo(T &arranjo, int tamanho) {
 
 template <typename T>
 void imprimeArranjo(T &arranjo, int tamanho) {
-
+    for (int i = 0; i < tamanho; i++) {
+        std::cout << arranjo[i] << (i != tamanho-1 ? ", " : "\n"); 
+    }
 }
 
 template <typename T>
-void liberaMemoria(T *arranjo) {
-    delete arranjo;
+void liberaArranjo(T *arranjo) {
+    if (arranjo) {
+        delete arranjo;
+    }
 }

@@ -30,13 +30,15 @@ int main () {
 
     int *arranjo = new int [tamanho];
 
-    preencheArranjo(arranjo, tamanho);
+    if (arranjo) {
+        preencheArranjo(arranjo, tamanho);
 
-    for (int i = 0; i < tamanho; i++) {
-        std::cout << arranjo[i] << (i != tamanho-1 ? ", " : "\n"); 
+        imprimeArranjo(arranjo, tamanho);
+
+        liberaArranjo(arranjo);
+    } else {
+        std::cout << "Erro na alocação da memória" << std::endl;
     }
-
-    delete arranjo;
 
     return 0;
 }

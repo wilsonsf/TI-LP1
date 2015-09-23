@@ -8,7 +8,7 @@ template <typename T>
 void imprimeArranjo(T &, int);
 
 template <typename T>
-void liberaMemoria(T *);
+void liberaArranjo(T *);
 
 #include "exercicio1.inl"
 #endif  

@@ -3,7 +3,7 @@
 #include "somaMatrizes.h"
 
 double ** allocaMatriz(int linhas, int colunas) {
-    double ** matriz;
+    double **matriz;
 
     matriz = new double* [linhas];
     if (!matriz) {
@@ -20,7 +20,7 @@ double ** allocaMatriz(int linhas, int colunas) {
     }
 }
 
-bool matrizEstaAlocada(double ** matriz){
+bool matrizEstaAlocada(double **matriz){
     if (matriz) {
         return true;
     }
@@ -37,10 +37,11 @@ void leituraDaMatriz(double **matriz, int linhas, int colunas) {
         }
     }
 }
-double ** somaMatrizes(double** matrizA, double** matrizB, int linhas, 
+
+double ** somaMatrizes(double **matrizA, double **matrizB, int linhas, 
                        int colunas){
 
-    double** matrizSoma = allocaMatriz(linhas,colunas);
+    double **matrizSoma = allocaMatriz(linhas,colunas);
     
     for (int i = 0; i < linhas; i ++) {
         for (int j = 0; j < colunas; j++) {
@@ -48,4 +49,15 @@ double ** somaMatrizes(double** matrizA, double** matrizB, int linhas,
         }
     }
     return matrizSoma;
+}
+
+void liberaMatriz(double **matriz, int linhas) {
+    for (int i = 0; i < linhas; i++) {
+        if (matriz[i])
+            delete matriz[i];
+    }
+
+    if (matriz) {
+        delete matriz;
+    }
 }

@@ -47,21 +47,9 @@ int main () {
     }
 
     // Liberação
-    for (int i = 0; i < linhas; i++) {
-        if (matrizA[i])
-            delete matrizA[i];
-        if (matrizB[i])
-            delete matrizB[i];
-        if (matrizSoma[i])
-            delete matrizSoma[i];
-    }
-
-    if (matrizA)
-        delete matrizA;
-    if (matrizB)
-        delete matrizB;
-    if (matrizSoma)
-        delete matrizSoma;
-
+    liberaMatriz(matrizA, linhas);
+    liberaMatriz(matrizB, linhas);
+    liberaMatriz(matrizSoma, linhas);
+    
     return 0;
 }

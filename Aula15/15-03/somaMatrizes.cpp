@@ -1,3 +1,10 @@
+/* 
+    Desenvolvido por Wilson de Farias
+    Disciplina: Linguagem de Programação 1
+    Curso: Bacharelado em Tecnologia da Informação
+    Data: 22/09/2015
+ */
+
 #include <iostream>
 #include <iomanip>
 #include "somaMatrizes.h"

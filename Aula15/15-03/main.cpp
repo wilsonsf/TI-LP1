@@ -7,6 +7,11 @@
  * alocação dinâmica de memória. Lembre-se que diversas chamadas à função de 
  * alocação de memória devem ser efetuadas para poder construir uma matriz.
 
+    Desenvolvido por Wilson de Farias
+    Disciplina: Linguagem de Programação 1
+    Curso: Bacharelado em Tecnologia da Informação
+    Data: 22/09/2015
+
  */ 
 
 // Linha de compilação: g++ main.cpp somaMatrizes.cpp -o teste

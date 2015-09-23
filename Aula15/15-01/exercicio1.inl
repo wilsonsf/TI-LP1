@@ -1,17 +1,11 @@
 #include <iostream>
 
 template <typename T>
-T * alocaArranjo(int tamanho) {
-
-    T *arranjo = new Arranjo[tamanho];
-
-
-    return arranjo;
-}
-
-template <typename T>
 void preencheArranjo(T &arranjo, int tamanho) {
-
+    for (int i = 0; i < tamanho; i ++){
+        std::cout << "Elemento " << i+1 << ": ";
+        std::cin >> arranjo[i];
+    }
 }
 
 template <typename T>

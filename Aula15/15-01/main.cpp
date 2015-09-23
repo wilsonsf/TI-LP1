@@ -20,7 +20,7 @@
 // Linha de compilação: g++ main.cpp -o teste
 
 #include <iostream>
-//#include "exercicio1.h"
+#include "exercicio1.h"
 
 int main () {
     std::cout << "Inicio da rotina" << std::endl;
@@ -30,10 +30,7 @@ int main () {
 
     int *arranjo = new int [tamanho];
 
-    for (int i = 0; i < tamanho; i ++){
-        std::cout << "Elemento " << i+1 << ": ";
-        std::cin >> arranjo[i];
-    }
+    preencheArranjo(arranjo, tamanho);
 
     for (int i = 0; i < tamanho; i++) {
         std::cout << arranjo[i] << (i != tamanho-1 ? ", " : "\n"); 

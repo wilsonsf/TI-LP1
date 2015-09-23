@@ -1,7 +1,5 @@
 #ifndef _EXERCICIO1_H_
 #define _EXERCICIO1_H_
-template <typename T>
-T * alocaArranjo();
 
 template <typename T>
 void preencheArranjo(T &, int);

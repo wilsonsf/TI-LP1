@@ -9,7 +9,12 @@ void leiaNotasDosAlunos(double * notas, int quantidade) {
     }
 }
 
-double calculeMedia(double *, int) {
+double calculeMedia(double *notas, int quantidade) {
+    double somatorio = 0;
 
-    return 0.0;
+    for (int i = 0; i < quantidade; i++) {
+        somatorio+= notas[i];
+    }
+    
+    return somatorio/quantidade;
 }

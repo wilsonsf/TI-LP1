@@ -31,17 +31,8 @@ int main () {
     if (notasDosAlunos) {
         leiaNotasDosAlunos(notasDosAlunos, numeroDeAlunos);
 
-
-        double somatorioDeNotas = 0;
-
-        for (int i = 0; i < numeroDeAlunos; i++) {
-            somatorioDeNotas+= notasDosAlunos[i];
-        }
-
-        double media = somatorioDeNotas / numeroDeAlunos;
-
-        std::cout << "Média das notas dos alunos: " 
-            << std::setprecision(2) << media << std::endl;
+        std::cout << "Média das notas dos alunos: " << std::setprecision(2) 
+            << calculeMedia(notasDosAlunos, numeroDeAlunos) << std::endl;
     }
     
     if (notasDosAlunos)

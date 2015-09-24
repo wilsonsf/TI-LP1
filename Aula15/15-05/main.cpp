@@ -5,7 +5,7 @@
     Desenvolvido por Wilson de Farias
     Disciplina: Linguagem de Programação 1
     Curso: Bacharelado em Tecnologia da Informação
-    Data: 23/09/2015
+    Data: 24/09/2015
  */ 
 
 // Linha de compilação: g++ main.cpp listaEncadeada.cpp -o teste

@@ -29,26 +29,13 @@
 
 int main () {
 
-    // inicialização
-    struct Item *primeiro, *atual;
+    struct Item *primeiro;
     primeiro = new struct Item;
     
-    // leitura
-    leiaListaIterativa(primeiro);
-    // leiaListaRecursiva(primeiro);
+    //leiaListaIterativa(primeiro);
+    leiaListaRecursiva(primeiro);
 
-
-    // impressão
-    atual = primeiro;
-    while (true) {
-        std::cout << atual->valor << (atual->proximo ? ", " : "");
-        if (atual->proximo) {
-            atual = atual->proximo;
-        } else {
-            break;
-        }
-    }
-    std::cout << std::endl;
+    imprimaLista(primeiro);
 
     liberaLista(primeiro);
     return 0;

@@ -6,5 +6,6 @@ struct Item {
 };
 void leiaListaIterativa(struct Item *);
 void leiaListaRecursiva(struct Item *);
+void imprimaLista(struct Item *);
 void liberaLista(struct Item *);
 #endif

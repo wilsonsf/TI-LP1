@@ -29,6 +29,17 @@ void leiaListaRecursiva(struct Item *atual) {
     }
 }
 
+void imprimaLista(struct Item *atual) {
+
+    std::cout << atual->valor << (atual->proximo ? ", " : "");
+    
+    if (atual->proximo) {
+        return imprimaLista(atual->proximo);
+    } else {
+        std::cout << std::endl;
+    }
+}
+
 void liberaLista(struct Item *atual) {
     if (!atual->proximo) {
         delete atual;

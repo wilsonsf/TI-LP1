@@ -22,6 +22,8 @@
 
  */ 
 
+// Linha de compilação: g++ main.cpp listaEncadeada.cpp -o teste
+
 #include <iostream>
 #include "listaEncadeada.h"
 
@@ -31,21 +33,10 @@ int main () {
     struct Item *primeiro, *atual;
     primeiro = new struct Item;
     
-    atual = primeiro;
-
     // leitura
-    while(true) {
-        std::cin >> atual->valor;
+    leiaListaIterativa(primeiro);
+    // leiaListaRecursiva(primeiro);
 
-        // condição de parada
-        if (atual->valor <= 0) {
-            break;
-        } else {
-
-            atual->proximo = new struct Item;
-            atual = atual->proximo;
-        }
-    }
 
     // impressão
     atual = primeiro;
@@ -57,8 +48,8 @@ int main () {
             break;
         }
     }
-
     std::cout << std::endl;
 
+    liberaLista(primeiro);
     return 0;
 }

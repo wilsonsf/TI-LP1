@@ -4,6 +4,7 @@ struct Item {
     int valor;
     struct Item *proximo;
 };
-
-
+void leiaListaIterativa(struct Item *);
+void leiaListaRecursiva(struct Item *);
+void liberaLista(struct Item *);
 #endif

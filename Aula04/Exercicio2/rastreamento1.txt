@@ -1,0 +1,29 @@
+Rastreamento da busca Binária recursiva.
+A função recebe um arranjo de inteiros, o ponto de 'inicio' da busca, e tamanho-1 como argumento 'final' e o valor 'procurado'.
+
+Arranjo de inteiros: {4,7,10,18,23,66}
+Elemento procurado: 23
+
+vetor = {4,7,10,18,23,66}
+procurado = 23;
+
+inicio = 0
+fim = 5
+indice = (5+0)/2 = 2
+vetor[2] = 10;
+
+retorna o resultado da função busca(vetor, 2, 5, 23)
+--------------------------
+inicio = 2
+fim = 5
+indice = (5+2)/2 = 3
+vetor[3] = 18;
+
+retorna o resultado da função busca(vetor, 3, 5, 23)
+--------------------------
+inicio = 3
+fim = 5
+indice = (5+3)/2 = 4
+vetor[4] = 23;
+
+Achou o elemento, retorna positivo em cadeia.

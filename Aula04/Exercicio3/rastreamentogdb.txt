@@ -1,0 +1,35 @@
+Rastreamento utilizando o gdb
+
+Rastreamento da busca Binária recursiva.
+A função recebe um arranjo de inteiros, o ponto de 'inicio' da busca, e tamanho-1 como argumento 'final' e o valor 'procurado'.
+
+Arranjo de inteiros: {4,7,10,18,23,66}
+Elemento procurado: 23
+
+
+O programa foi compilado com a seguinte linha
+g++ -O0 -d tarefa1.cpp -o teste
+
+Foi inserido um breakpoint na linha 86 da função buscaBinariaRecursiva, onde é definido o novo valor 
+d 86
+
+Em cada parada eram lido os valores das variaveis com o comando l
+
+       inicio | 0 | 2 | 4 |
+          fim | 5 | 5 | 5 |
+       indice | 2 | 3 | 4 |
+vetor[indice] |10 | 18| 23|
+
+Entrava na condição (vetor[indice] == procurado) e saía da recursão com retorno positivo
+
+Arranjo de inteiros: {4,7,10,18,23,66}
+Elemento procurado: 19
+
+Repetido o processo de compilação e depuração com o gdb
+
+       inicio | 0 | 2 | 4 | 4 |
+          fim | 5 | 5 | 5 | 4 |
+       indice | 2 | 3 | 4 | 4 |
+vetor[indice] |10 | 18| 23| 23|
+
+Entrava no condicional (inicio == fim) e saia da recursão com retorno falso 

@@ -1,23 +1,27 @@
 #include "listaEncadeada.h"
 #include <iostream>
 
-void leiaLista(struct Item *atual) {
+struct Item * leiaLista(struct Item *atual) {
     std::cin >> atual->valor;
 
     if (atual->valor <= 0) {
-        return;
+        //atual é o último, como faço pra armazenar isso?
+        return atual;
     } else {
         atual->proximo = new struct Item;
+        atual->proximo->anterior = atual;
         return leiaLista(atual->proximo);
     }
 }
 
-void imprimaLista(struct Item *atual) {
-
+void imprimaListaNaOrdemDeInsercao(struct Item *atual) {
+    std::cout << atual->valor << (atual->proximo ? ", " : "");
     if (atual->proximo) {
-        imprimaLista(atual->proximo);
-    } 
-    std::cout << atual->valor << " ";// (atual->proximo ? ", " : "");
+        imprimaListaNaOrdemDeInsercao(atual->proximo);
+    } else {
+        std::cout << std::endl;
+    }
+    
 }
 
 void liberaLista(struct Item *atual) {

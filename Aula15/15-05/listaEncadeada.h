@@ -3,8 +3,9 @@
 struct Item {
     int valor;
     struct Item *proximo;
+    struct Item *anterior;
 };
-void leiaLista(struct Item *);
-void imprimaLista(struct Item *);
+struct Item * leiaLista(struct Item *);
+void imprimaListaNaOrdemDeInsercao(struct Item *);
 void liberaLista(struct Item *);
 #endif

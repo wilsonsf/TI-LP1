@@ -16,15 +16,19 @@
 int main () {
 
     struct Item *primeiro, *ultimo;
-    primeiro = new struct Item;
+    primeiro = allocaItem();
     
     std::cout << "Insira valores inteiros (<= 0 para parar): " << std::endl;
     ultimo = leiaLista(primeiro);
 
+    std::cout << "Impressão na ordem de inserção: ";
     imprimaListaNaOrdemDeInsercao(primeiro);
 
     std::cout << "Primeiro: " << primeiro->valor << std::endl;
     std::cout << "Ultimo:   " << ultimo->valor << std::endl;
+
+    std::cout << "Impressão na ordem inversa a de inserção: ";
+    imprimaListaNaOrdemInversaDeInsercao(ultimo);
 
     liberaLista(primeiro);
     return 0;

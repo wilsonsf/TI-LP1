@@ -20,21 +20,11 @@ struct Item * leiaLista(struct Item *atual) {
     }
 }
 
-void imprimaListaNaOrdemDeInsercao(struct Item *atual) {
+void imprimaLista(struct Item *atual) {
     std::cout << atual->valor;
     if (atual->proximo) {
         std::cout << ", ";
-        imprimaListaNaOrdemDeInsercao(atual->proximo);
-    } else {
-        std::cout << std::endl;
-    }
-}
-
-void imprimaListaNaOrdemInversaDeInsercao(struct Item *atual) {
-    std::cout << atual->valor;
-    if (atual->anterior) {
-        std::cout << ", ";
-        imprimaListaNaOrdemInversaDeInsercao(atual->anterior);
+        imprimaLista(atual->proximo);
     } else {
         std::cout << std::endl;
     }

@@ -7,8 +7,8 @@ struct Item {
 };
 struct Item * allocaItem();
 struct Item * leiaLista(struct Item *);
-void imprimaListaNaOrdemDeInsercao(struct Item *);
-void imprimaListaNaOrdemInversaDeInsercao(struct Item *);
+void insira(int);
+void imprimaLista(struct Item *);
 void liberaLista(struct Item *);
 
 #endif

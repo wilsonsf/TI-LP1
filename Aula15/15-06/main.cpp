@@ -8,6 +8,8 @@
     Data: 24/09/2015
  */ 
 
+// Linha de compilação: g++ main.cpp listaEncadeada.cpp -o teste
+
 #include <iostream>
 #include "listaEncadeada.h"
 

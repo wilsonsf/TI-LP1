@@ -20,13 +20,33 @@
 */
 
 #include <iostream>
-#include "numerosReais.h"
+// #include "numerosReais.h"
+#include "separadorFracionario.h"
+
+int testaSeparador();
 
 int main () {
 
-    realtype testeCriacao = floatParaRealtype(3.1415);
-    
-    float testeInversao = realtypeParaFloat(testeCriacao);
-    
+    testaSeparador();
+
+    // realtype testeCriacao = floatParaRealtype(3.1415);
+
+    // float testeInversao = realtypeParaFloat(testeCriacao);
+
+    return 0;
+}
+
+int testaSeparador () {
+    while (true) {
+        long inteiro,fracionario;
+        double entrada;
+
+        std::cin >> entrada;
+
+        inteiro = separaFracionario(entrada, fracionario);
+        std::cout << "Parte inteira: " << inteiro <<  std::endl;
+        std::cout << "Parte fracionaria: " << fracionario << std::endl;
+    }
+
     return 0;
 }

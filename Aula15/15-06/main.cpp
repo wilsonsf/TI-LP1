@@ -14,10 +14,11 @@
 int main () {
 
     struct Item *primeiro;
-    primeiro = new struct Item;
     
-    leiaLista(primeiro);
+    std::cout << "Insira valores inteiros (<= 0 para parar): " << std::endl;
+    primeiro = leiaLista();
 
+    std::cout << "Impressão na ordem crescente: ";
     imprimaLista(primeiro);
 
     liberaLista(primeiro);

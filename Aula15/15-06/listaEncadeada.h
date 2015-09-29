@@ -3,9 +3,13 @@
 struct Item {
     int valor;
     struct Item *proximo;
+    struct Item *anterior;
 };
-void leiaLista(struct Item *);
-void insira(int);
+struct Item * allocaItem();
+struct Item * allocaItemComValor(int);
+struct Item * leiaLista();
+// void insira(struct Item *, struct Item *);
 void imprimaLista(struct Item *);
 void liberaLista(struct Item *);
+
 #endif

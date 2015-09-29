@@ -6,7 +6,7 @@ private:
     double quilometragem;
     double litros;
 public:
-    Automovel();
+    Automovel(double _quilometragem = 0, double _litros = 0);
     double calculeRendimento();
 
     double getQuilometragem();

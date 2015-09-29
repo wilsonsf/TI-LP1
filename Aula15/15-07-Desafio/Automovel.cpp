@@ -1,7 +1,8 @@
 #include "Automovel.h"
 
-Automovel::Automovel() {
-    quilometragem = litros = 0;
+Automovel::Automovel(double _quilometragem, double _litros) {
+    litros = _litros;
+    quilometragem = _quilometragem;
 }
 
 double Automovel::calculeRendimento() {

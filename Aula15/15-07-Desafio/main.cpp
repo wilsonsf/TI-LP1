@@ -11,9 +11,25 @@
  * alocar/liberar a memória necessária.
  */ 
 
-#include <iostream>
+//Linha de compilação:
+ // g++ Automovel.cpp NodoAutomovel.cpp ListaAutomovel.cpp main.cpp -o teste
 
- int main () {
+#include <iostream>
+#include "ListaAutomovel.h"
+
+int main () {
+
+    ListaAutomovel *lista = new ListaAutomovel();
+    Automovel *a1 = new Automovel(400,40);
+    std::cout << "Rendimento (A1): " << a1->calculeRendimento() << std::endl;
+
+    Automovel *a2 = new Automovel(800,40);
+    std::cout << "Rendimento (A2): " << a2->calculeRendimento() << std::endl;
+
+    lista->adiciona(a1);
+    lista->adiciona(a2);
+
+    lista->calculeRendimentoTotal();
 
     return 0;
- }
+}

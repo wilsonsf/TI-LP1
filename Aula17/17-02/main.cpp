@@ -20,8 +20,13 @@
 */
 
 #include <iostream>
+#include "numerosReais.h"
 
 int main () {
+
+    realtype testeCriacao = floatParaRealtype(3.1415);
+    
+    float testeInversao = realtypeParaFloat(testeCriacao);
     
     return 0;
 }

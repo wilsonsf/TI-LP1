@@ -30,18 +30,32 @@ bool Lista::adiciona(int valor) {
             return true;
         } 
     }
-    catch (...){
+    catch (...) {
         return false;
     }
     
 }
 
-int calculaSomaRecursivo() {
+int Lista::calculaSomaRecursiva() {
+    return calculaSomaNodo(primeiro);
+}
 
-    return 0;
+int Lista::calculaSomaNodo(Nodo * atual) {
+    if (!atual){
+        return 0;
+    } else {
+        return atual->valor+calculaSomaNodo(atual->proximo);
+    }
 }
  
-int calculaSomaIterativo() {
+int Lista::calculaSomaIterativa() {
+    int soma = 0;
 
-    return 0;
+    Nodo *atual = primeiro;
+    while (atual) {
+        soma += atual->valor;
+        atual = atual->proximo;
+    }
+
+    return soma;
 }

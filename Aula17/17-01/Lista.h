@@ -10,9 +10,10 @@ public:
     Lista();
     ~Lista();
     bool adiciona(int);
-    int calculaSomaRecursivo();
-    int calculaSomaIterativo();
-    
+    int calculaSomaRecursiva();
+    int calculaSomaIterativa();
+private:
+    int calculaSomaNodo(Nodo *);
 };
 
 #endif

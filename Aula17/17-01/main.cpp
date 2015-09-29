@@ -3,7 +3,7 @@
     em NULL e devolva a soma das chaves dos nodes da lista. 
     Escreva duas versões: uma iterativa e uma recursiva.
 */
-// Linha de compilação: g++ Nodo.cpp main.cpp -o teste
+// Linha de compilação: g++ Lista.cpp Nodo.cpp main.cpp -o teste
 
 #include <iostream>
 #include "Lista.h"
@@ -39,12 +39,24 @@ void testaNodo() {
 void testaLista() {
     Lista *lista = new Lista();
 
+    std::cout << "Soma: " << lista->calculaSomaIterativa() << std::endl;
+
     if (!lista->adiciona(5))
         std::cout << "Erro ao adicionar" << std::endl;
+    std::cout << "Soma Iterativa: " << lista->calculaSomaIterativa() << std::endl;
+    std::cout << "Soma Recursiva: " << lista->calculaSomaRecursiva() << std::endl;
+
     if(!lista->adiciona(9))
         std::cout << "Erro ao adicionar" << std::endl;
+
+    std::cout << "Soma Iterativa: " << lista->calculaSomaIterativa() << std::endl;
+    std::cout << "Soma Recursiva: " << lista->calculaSomaRecursiva() << std::endl;
+    
     if(!lista->adiciona(-3))
         std::cout << "Erro ao adicionar" << std::endl;
+    std::cout << "Soma Iterativa: " << lista->calculaSomaIterativa() << std::endl;
+    std::cout << "Soma Recursiva: " << lista->calculaSomaRecursiva() << std::endl;
+
 
 
 }

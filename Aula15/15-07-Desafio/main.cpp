@@ -14,6 +14,9 @@
 //Linha de compilação:
  // g++ Automovel.cpp NodoAutomovel.cpp ListaAutomovel.cpp main.cpp -o teste
 
+Algoritmo incompleto, falta testar pq a soma não está sendo calculada e 
+exibida na função calculeRendimentoTotal() da Lista.
+
 #include <iostream>
 #include "ListaAutomovel.h"
 

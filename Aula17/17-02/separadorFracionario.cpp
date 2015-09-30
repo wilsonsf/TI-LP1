@@ -1,7 +1,8 @@
 #include "separadorFracionario.h"
+#include <iostream>
 #include <cmath>
 
-long separaFracionario(double valor, long &frac) {
+long separaFracionario(float valor, int &frac) {
     int parteInteira = 0;
     int parteFracionaria = 0;
 
@@ -13,35 +14,44 @@ long separaFracionario(double valor, long &frac) {
     else {
         parteInteira = ceil(valor);
         valor-= parteInteira;
+
+        // O sinal é armazenado na parte inteira
+        valor = fabs(valor);
     }
-
-    // O sinal é armazenado na parte inteira
-    valor = fabs(valor);
-
-    while (valor > 0) {
+    int cont = 0;
+    int limite = 9; // int 2.000.000.000
+    
+    while (cont < limite) {
         // Se for 0, irrelevante
         parteFracionaria *= 10; 
 
         // Separando 1 digito
         valor *= 10;           
-        int digito = (int) floor(valor * 10);
+        int digito = (int) floor(valor); // Remover essa multiplicação
 
         // Atualizando o 'valor'
         valor -= digito;
 
         // Adicionando a parte inteira
         parteFracionaria += digito;
-        
+        cont ++;
     }
 
     frac = parteFracionaria;
     return parteInteira;
 }
-/* 
-3.14515
-0.14515
-1.4515      floor(1.4515) = 1 => parte fracionaria
-0.4515 * 10 
-4.515
-0.515 *10
-*/
+
+int testaSeparador () {
+    while (true) {
+        int inteiro,fracionario;
+        double entrada;
+
+        std::cin >> entrada;
+
+        inteiro = separaFracionario(entrada, fracionario);
+        std::cout << "Parte inteira: " << inteiro <<  std::endl;
+        std::cout << "Parte fracionaria: " << fracionario << std::endl;
+    }
+
+    return 0;
+}

@@ -19,34 +19,24 @@
     registros de entrada.
 */
 
-#include <iostream>
-// #include "numerosReais.h"
-#include "separadorFracionario.h"
 
-int testaSeparador();
+// g++ -g -O0 numerosReais.cpp separadorFracionario.cpp main.cpp -o teste
+
+#include <iostream>
+#include "numerosReais.h"
 
 int main () {
 
-    testaSeparador();
-
-    // realtype testeCriacao = floatParaRealtype(3.1415);
-
-    // float testeInversao = realtypeParaFloat(testeCriacao);
-
-    return 0;
-}
-
-int testaSeparador () {
-    while (true) {
-        long inteiro,fracionario;
-        double entrada;
-
+    while(true) {
+        float entrada;
         std::cin >> entrada;
+        
+        realtype testeCriacao = floatParaRealtype(entrada);
+        float testeInversao = realtypeParaFloat(testeCriacao);
 
-        inteiro = separaFracionario(entrada, fracionario);
-        std::cout << "Parte inteira: " << inteiro <<  std::endl;
-        std::cout << "Parte fracionaria: " << fracionario << std::endl;
+        std::cout << "Entrada: " << entrada << std::endl;
+        std::cout << "Inversao: " << testeInversao << std::endl;
     }
-
+    
     return 0;
 }

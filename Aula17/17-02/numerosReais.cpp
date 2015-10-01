@@ -3,17 +3,14 @@
 
 realtype floatParaRealtype(float valor) {
     realtype novo;
-    novo.left = 0;
-    novo.right = 0;
-
     novo.left = separaFracionario(valor, novo.right);
 
     return novo;
 }
 
 float realtypeParaFloat(realtype valor) {
-    float saida = 0;
-    saida += valor.left;
+    float saida;
+    saida = valor.left;
     saida += valor.right /1000000000.0f;
 
     return saida;
@@ -21,15 +18,46 @@ float realtypeParaFloat(realtype valor) {
 
 realtype add(realtype n1, realtype n2) {
 
-    return n1;
+    float _n1 = realtypeParaFloat(n1);
+    float _n2 = realtypeParaFloat(n2);
+    float resultado = _n1 + _n2;
+
+    /*
+        realtype soma;
+        soma.left = n1.left + n2.left;
+
+        if (( n1.left > 0 && n2.left < 0 )|| ( n2.left < 0 && n1.left > 0 )) {
+            soma.right = n1.right - n2.right;
+        } else {
+            soma.right = n1.right + n2.right;
+        }
+    */
+
+    return floatParaRealtype(resultado);
 }
 
 realtype substract(realtype n1,realtype n2) {
+    float _n1 = realtypeParaFloat(n1);
+    float _n2 = realtypeParaFloat(n2);
+    float resultado = _n1 - _n2;
 
-    return n1;
+    /*
+        realtype resultado;
+        resultado.left = n1.left - n2.left;
+
+        if (( n1.left > 0 && n2.left < 0 )|| ( n2.left < 0 && n1.left > 0 )) {
+            resultado.right = n1.right + n2.right;
+        } else {
+            resultado.right = n1.right - n2.right;
+        }
+    */
+    return floatParaRealtype(resultado);
 }
 
 realtype multiply(realtype n1,realtype n2) {
+    float _n1 = realtypeParaFloat(n1);
+    float _n2 = realtypeParaFloat(n2);
+    float resultado = _n1 * _n2;
 
-    return n1;
+    return floatParaRealtype(resultado);
 }

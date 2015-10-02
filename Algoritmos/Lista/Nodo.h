@@ -3,12 +3,22 @@
 
 #include <iostream>
 
+template <class T>
 class Nodo {
-public:
-    int valor;
+private:
+    T valor;
     Nodo *proximo;
 
-    Nodo(int _valor = 0, Nodo *_proximo = NULL);
+public: 
+    Nodo(T valor = NULL, Nodo<T> *proximo = NULL);
     ~Nodo();
+    T getValor() const;
+    void setValor (T);
+
+    Nodo * getProximo() const;
+    void setProximo(Nodo<T> *);
+    void imprime() const;
 };
+
+#include "Nodo.inl"
 #endif

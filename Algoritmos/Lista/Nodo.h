@@ -12,12 +12,14 @@ private:
 public: 
     Nodo(T valor = NULL, Nodo<T> *proximo = NULL);
     ~Nodo();
+
+    void imprime() const;
+
     T getValor() const;
     void setValor (T);
 
     Nodo * getProximo() const;
     void setProximo(Nodo<T> *);
-    void imprime() const;
 };
 
 #include "Nodo.inl"

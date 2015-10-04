@@ -1,6 +1,8 @@
 #ifndef _LISTA_H_
 #define _LISTA_H_
-#include <iostream>
+
+// #include <iostream>
+#include "Nodo.h"
 
 template <class T>
 class Lista {
@@ -12,10 +14,11 @@ public:
     ~Lista();
 
     bool adiciona(T);
+    void imprime() const;
 
-    T getPrimeiro();
+    T getPrimeiro() const;
     void setPrimeiro(T);
-    T getUltimo();
+    T getUltimo() const;
     void setUltimo(T);
 };
 

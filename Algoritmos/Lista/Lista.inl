@@ -1,61 +1,40 @@
 #include "Lista.h"
 
 Lista::Lista() {
-    primeiro = NULL;
-    ultimo = NULL;
+    this->primeiro = NULL;
+    this->ultimo = NULL;
 }
 
 Lista::~Lista() {
-    if (primeiro) {
-        delete primeiro;
-        primeiro = NULL;
+    if (this->primeiro) {
+        delete this->primeiro;
+        this->primeiro = NULL;
     }
 
-    if (ultimo) {
-        delete ultimo;
-        ultimo = NULL;
+    if (this->ultimo) {
+        delete this->ultimo;
+        this->ultimo = NULL;
     }
 }
 
 bool Lista::adiciona(int valor) {
     try {
-        if (!primeiro) {
-            primeiro = new Nodo (valor);
-            ultimo = primeiro;
-            return true;
+        if (!this->primeiro) {
+            this->primeiro = new Nodo (valor);
+            this->ultimo = this->primeiro;
         } else {
             Nodo *novo = new Nodo (valor);
             ultimo->proximo = novo;
-            ultimo = novo;
-            return true;
-        } 
+            this->ultimo = novo;
+        }
+        return true;
     }
     catch (...) {
         return false;
     }
-    
+    return false;
 }
 
 int Lista::calculaSomaRecursiva() {
     return calculaSomaNodo(primeiro);
-}
-
-int Lista::calculaSomaNodo(Nodo * atual) {
-    if (!atual){
-        return 0;
-    } else {
-        return atual->valor+calculaSomaNodo(atual->proximo);
-    }
-}
- 
-int Lista::calculaSomaIterativa() {
-    int soma = 0;
-
-    Nodo *atual = primeiro;
-    while (atual) {
-        soma += atual->valor;
-        atual = atual->proximo;
-    }
-
-    return soma;
 }

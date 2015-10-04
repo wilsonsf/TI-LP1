@@ -1,19 +1,23 @@
 #ifndef _LISTA_H_
 #define _LISTA_H_
-#include "Nodo.h"
+#include <iostream>
 
+template <class T>
 class Lista {
+private:
+    Nodo<T> * primeiro;
+    Nodo<T> * ultimo;
 public:
-    Nodo * primeiro;
-    Nodo * ultimo;
-    
     Lista();
     ~Lista();
-    bool adiciona(int);
-    int calculaSomaRecursiva();
-    int calculaSomaIterativa();
-private:
-    int calculaSomaNodo(Nodo *);
+
+    bool adiciona(T);
+
+    T getPrimeiro();
+    void setPrimeiro(T);
+    T getUltimo();
+    void setUltimo(T);
 };
 
+#include "Lista.inl"
 #endif

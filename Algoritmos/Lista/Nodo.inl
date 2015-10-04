@@ -37,10 +37,11 @@ void Nodo<T>::setProximo(Nodo<T> *proximo) {
 
 template <class T>
 void Nodo<T>::imprime() const {
-
     std::cout << this->valor;
     if (proximo) {
         std::cout << " - ";
         proximo->imprime();
+    } else {
+        std::cout << std::endl;
     }
 }

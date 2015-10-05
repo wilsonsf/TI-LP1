@@ -20,7 +20,7 @@
 */
 
 
-// g++ -g -O0 numerosReais.cpp separadorFracionario.cpp main.cpp -o teste
+// g++ numerosReais.cpp separadorFracionario.cpp main.cpp -o teste
 
 #include <iostream>
 #include "numerosReais.h"

@@ -11,7 +11,12 @@ realtype floatParaRealtype(float valor) {
 float realtypeParaFloat(realtype valor) {
     float saida;
     saida = valor.left;
-    saida += valor.right /1000000000.0f;
+
+    float fracionario = valor.right /1000000000.0f;
+    if (valor.left < 0)
+        fracionario *= -1;
+    
+    saida += fracionario;
 
     return saida;
 }

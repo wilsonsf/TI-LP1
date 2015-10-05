@@ -42,13 +42,21 @@ int main () {
 
 void testaConversao() {
     float entrada;
-    std::cin >> entrada;
-    
-    realtype testeCriacao = floatParaRealtype(entrada);
-    float testeInversao = realtypeParaFloat(testeCriacao);
+    do {
+        std::cin >> entrada;
+        if (entrada > 5000) 
+            break;
+        realtype testeCriacao = floatParaRealtype(entrada);
 
-    std::cout << "Entrada: " << entrada << std::endl;
-    std::cout << "Inversao: " << testeInversao << std::endl;
+        std::cout << "Entrada: " << entrada << std::endl;
+
+        std::cout << "Realtype - ";
+        std::cout << "Parte Inteira: " << testeCriacao.left << " | "
+            << "Fracionario: " << testeCriacao.right << std::endl;
+
+        float testeInversao = realtypeParaFloat(testeCriacao);
+        std::cout << "Inversao: " << testeInversao << std::endl << std::endl;
+    } while (true);
 }
 
 void testaSoma() {

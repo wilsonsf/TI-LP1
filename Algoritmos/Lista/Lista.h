@@ -20,6 +20,8 @@ public:
     void setPrimeiro(T);
     T getUltimo() const;
     void setUltimo(T);
+
+    std::ostream& operator<<(std::ostream& os, const T& obj);
 };
 
 #include "Lista.inl"

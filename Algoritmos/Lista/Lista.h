@@ -1,7 +1,6 @@
 #ifndef _LISTA_H_
 #define _LISTA_H_
 
-// #include <iostream>
 #include "Nodo.h"
 
 template <class T>
@@ -20,6 +19,8 @@ public:
     void setPrimeiro(T);
     T getUltimo() const;
     void setUltimo(T);
+
+    std::ostream& operator<<(std::ostream& os, const T& obj);
 };
 
 #include "Lista.inl"

@@ -6,20 +6,24 @@
 template <class T>
 class Nodo {
 private:
-    T valor;
-    Nodo *proximo;
+  T* conteudo;
+  Nodo *proximo;
 
 public: 
-    Nodo(T valor = NULL, Nodo<T> *proximo = NULL);
-    ~Nodo();
+  Nodo(T* conteudo = NULL, Nodo<T> *proximo = NULL);
+  Nodo(T conteudo, Nodo<T> * proximo = NULL);
+  ~Nodo();
 
-    void imprime() const;
+  void imprime() const;
 
-    T getValor() const;
-    void setValor (T);
+  T* getConteudo() const;
+  void setConteudo (T);
 
-    Nodo * getProximo() const;
-    void setProximo(Nodo<T> *);
+  Nodo * getProximo() const;
+  void setProximo(Nodo<T> *);
+
+  // friend std::ostream& operator<< (std::ostream& os, Nodo<T> nodo);
+  // friend std::ostream& operator<<(std::ostream& os, const Nodo<T> nodo);
 };
 
 #include "Nodo.inl"

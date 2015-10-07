@@ -2,6 +2,7 @@
 #define _NODO_H_
 
 #include <iostream>
+using namespace std;
 
 template <class T>
 class Nodo {
@@ -22,8 +23,8 @@ public:
   Nodo * getProximo() const;
   void setProximo(Nodo<T> *);
 
-  // friend std::ostream& operator<< (std::ostream& os, Nodo<T> nodo);
-  // friend std::ostream& operator<<(std::ostream& os, const Nodo<T> nodo);
+  template <class U>
+  friend ostream& operator << (ostream& os, const Nodo<U>& nodo);
 };
 
 #include "Nodo.inl"

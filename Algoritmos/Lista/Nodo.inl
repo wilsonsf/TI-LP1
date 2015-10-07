@@ -1,19 +1,25 @@
 template <class T>
 Nodo<T>::Nodo(T* conteudo, Nodo *proximo) {
+   // cout << "Atual ponteiro: " << this << " | Valor: " << *conteudo 
+   //                      << " | Proximo: " << proximo << endl;
   this->conteudo = conteudo;
   this->proximo = proximo;
 }
 
 template <class T>
-Nodo<T>::Nodo(T conteudo, Nodo *proximo) {
+Nodo<T>::Nodo(T conteudo, Nodo<T> *proximo) {
+  // cout << "Atual: " << this << " | Valor: " << conteudo 
+  //         << " | Proximo: " << proximo << endl;
   this->conteudo = new T();
-  *this->conteudo = conteudo;
-  this->proximo = proximo;
+  if (this->conteudo) {
+    *this->conteudo = conteudo;
+    this->proximo = proximo;
+  }
 }
 
 template <class T>
 Nodo<T>::~Nodo() {
-  // std::cout << "Liberando: " << this << " | Proximo: " << this->proximo << std::endl;
+  // cout << "Liberando: " << this << " | Proximo: " << this->proximo << endl;
   if (proximo) {
     delete this->proximo;
   }
@@ -24,7 +30,7 @@ Nodo<T>::~Nodo() {
   this->proximo = NULL;
   this->conteudo = NULL;
 
-  // std::cout << "Proximo liberado: " << this->proximo << " | Saindo de: " << this << std::endl;
+  // cout << "Proximo liberado: " << this->proximo << " | Saindo de: " << this << endl;
 }
 
 template <class T>
@@ -49,20 +55,30 @@ void Nodo<T>::setProximo(Nodo<T> *proximo) {
 
 template <class T>
 void Nodo<T>::imprime() const {
-  std::cout << *this->conteudo;
+  cout << *this->conteudo;
   if (proximo) {
-    std::cout << " - ";
+    cout << " - ";
     proximo->imprime();
   } else {
-    std::cout << std::endl;
+    cout << endl;
   }
 }
 
-// template <class T>
-// std::ostream& operator<< (std::ostream& os, Nodo<T> nodo) {
-//   // os << nodo.getConteudo();
-//   // if (nodo.getProximo()) {
-//   //   os << " - " << nodo.getProximo();
-//   // }
-//   return os;
-// }
+
+template <class T>
+ostream& operator << (ostream& os, const Nodo<T>& nodo) {
+  os << *nodo.getConteudo();
+  if (nodo.getProximo()) {
+    os << " - " << *nodo.getProximo();
+  }
+  return os;
+}
+
+
+
+
+
+
+
+
+

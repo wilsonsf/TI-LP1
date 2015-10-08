@@ -1,28 +1,46 @@
 template <class T>
-Nodo<T>::Nodo(T valor, Nodo *proximo) {
-  this->valor = valor;
+Nodo<T>::Nodo(T* conteudo, Nodo *proximo) {
+   // cout << "Atual ponteiro: " << this << " | Valor: " << *conteudo 
+   //                      << " | Proximo: " << proximo << endl;
+  this->conteudo = conteudo;
   this->proximo = proximo;
 }
 
 template <class T>
+Nodo<T>::Nodo(T conteudo, Nodo<T> *proximo) {
+  // cout << "Atual: " << this << " | Valor: " << conteudo 
+  //         << " | Proximo: " << proximo << endl;
+  this->conteudo = new T();
+  if (this->conteudo) {
+    *this->conteudo = conteudo;
+    this->proximo = proximo;
+  }
+}
+
+template <class T>
 Nodo<T>::~Nodo() {
-  if (proximo)
+  // cout << "Liberando: " << this << " | Proximo: " << this->proximo << endl;
+  if (proximo) {
     delete this->proximo;
-  if (valor) 
-    delete this->valor;
+  }
+  if (conteudo) {
+    delete this->conteudo;
+  }
 
-  proximo = NULL;
-  valor = NULL;
+  this->proximo = NULL;
+  this->conteudo = NULL;
+
+  // cout << "Proximo liberado: " << this->proximo << " | Saindo de: " << this << endl;
 }
 
 template <class T>
-T Nodo<T>::getValor() const {
-  return this->valor;
+T* Nodo<T>::getConteudo() const {
+  return this->conteudo;
 }
 
 template <class T>
-void Nodo<T>::setValor (T valor) {
-  this->valor = valor;
+void Nodo<T>::setConteudo (T conteudo) {
+  this->conteudo = conteudo;
 }
 
 template <class T>
@@ -37,11 +55,30 @@ void Nodo<T>::setProximo(Nodo<T> *proximo) {
 
 template <class T>
 void Nodo<T>::imprime() const {
-  std::cout << this->valor;
+  cout << *this->conteudo;
   if (proximo) {
-    std::cout << " - ";
+    cout << " - ";
     proximo->imprime();
   } else {
-    std::cout << std::endl;
+    cout << endl;
   }
 }
+
+
+template <class T>
+ostream& operator << (ostream& os, const Nodo<T>& nodo) {
+  os << *nodo.getConteudo();
+  if (nodo.getProximo()) {
+    os << " - " << *nodo.getProximo();
+  }
+  return os;
+}
+
+
+
+
+
+
+
+
+

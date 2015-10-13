@@ -18,7 +18,8 @@
 #include <iostream>
 #include <cstdlib>
 
-#include "NoReal.h"
+#include "FilaDupla.h"
+// #include "NoReal.h"
 
 using namespace std;
 
@@ -27,28 +28,35 @@ void testaNoReal();
 void imprimeMenu();
 
 int main () {
+  // testaNoReal();
 
-  testaNoReal();
+  FilaDupla *fila = new FilaDupla();
 
-int opcao = 0;
+  int opcao = 0;
 
   do {
-    system("clear");
+    // system("clear");
     bool vaiSair = false;
     
     imprimeMenu();
     cin >> opcao;
 
+    int leitura = 0;
     switch (opcao) {
       case 1:
+        cin >> leitura;
+        fila->adicionaCabeca(leitura);
       break;
       case 2:
+        cin >> leitura;
+        fila->adicionaCauda(leitura);
       break;
       case 3:
       break;
       case 4:
       break;
       case 5:
+        cout << *fila << endl;
       break;
       case 6:
       break;

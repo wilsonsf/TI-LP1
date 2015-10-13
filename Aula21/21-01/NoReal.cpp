@@ -5,11 +5,11 @@ NoReal::NoReal(double valor, NoReal* anterior, NoReal* proximo)
 
 NoReal::~NoReal() {
   if (anterior) {
-    delete anterior;
+    // delete anterior;
     anterior = NULL;
   }
   if (proximo) {
-    delete proximo;
+    // delete proximo;
     proximo = NULL;
   }
 }

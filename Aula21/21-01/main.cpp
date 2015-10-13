@@ -52,11 +52,13 @@ int main () {
         fila->adicionaCauda(leitura);
       break;
       case 3:
+        cout << "Elemento removido: " << fila->removeCabeca() << endl;
       break;
       case 4:
+        cout << "Elemento removido: " << fila->removeCauda() << endl;
       break;
       case 5:
-        cout << *fila << endl;
+        cout << "Fila atual: " << *fila << endl;
       break;
       case 6:
       break;
@@ -64,7 +66,7 @@ int main () {
         vaiSair = true;
         break;
       default:
-        cout << "Opcao inválida, tente novamente." << endl;
+        cout << endl << "Opcao inválida, tente novamente." << endl << endl;
     }
 
     if (vaiSair)

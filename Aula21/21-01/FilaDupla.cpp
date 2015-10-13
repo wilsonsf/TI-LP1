@@ -25,8 +25,23 @@ void FilaDupla::adicionaCabeca(double valor) {
 }
 
 double FilaDupla::removeCabeca() {
+  
+  double retorno = 0.0;
+  if (temCabeca()) {
+    retorno = cabeca->valor;
 
-  return 0.0;
+    NoReal *seraApagado = cabeca;
+    if (cauda == cabeca) {
+      cabeca = NULL;
+      cauda = NULL;
+    } else {
+      cabeca = cabeca->proximo;
+      cabeca->anterior = NULL;
+    }
+    delete seraApagado;
+  }
+
+  return retorno;
 }
 
 void FilaDupla::adicionaCauda(double valor) {
@@ -43,7 +58,23 @@ void FilaDupla::adicionaCauda(double valor) {
 
 double FilaDupla::removeCauda() {
 
-  return 0.0;
+  double retorno = 0.0;
+  if (temCauda()) {
+    retorno = cauda->valor;
+
+    NoReal *seraApagado = cauda;
+    if (cauda == cabeca) {
+      cabeca = NULL;
+      cauda = NULL;
+    } else {
+      cauda = cauda->anterior;
+      cauda->proximo = NULL;
+    }
+
+    delete seraApagado;
+  }
+
+  return retorno;
 }
 
 // Acesso aos ponteiros
@@ -69,10 +100,8 @@ std::ostream& operator << (std::ostream& os, FilaDupla& fila) {
 
   NoReal* atual = fila.getCabeca();
   if (atual) {
-    os << "Fila atual: ";
-
     do {
-      os << atual->valor << (atual->proximo ? " - " : "");
+      os << atual->valor << (atual->proximo ? " , " : "");
       atual = atual->proximo;
     } while (atual);
   }

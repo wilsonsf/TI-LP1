@@ -13,7 +13,7 @@
 
 */
 
-// g++ main.cpp NoReal.cpp -o teste
+// g++ main.cpp NoReal.cpp FilaDupla.cpp -o teste
 
 #include <iostream>
 #include <cstdlib>
@@ -61,6 +61,8 @@ int main () {
         cout << "Fila atual: " << *fila << endl;
       break;
       case 6:
+        fila->removeTudo();
+        cout << "Todos os elementos removidos" << endl;
       break;
       case 7:
         vaiSair = true;

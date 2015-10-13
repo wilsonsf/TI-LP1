@@ -77,6 +77,12 @@ double FilaDupla::removeCauda() {
   return retorno;
 }
 
+void FilaDupla::removeTudo() {
+  while (cabeca) {
+    removeCabeca();
+  }
+}
+
 // Acesso aos ponteiros
 NoReal* FilaDupla::getCabeca() {
   return this->cabeca;

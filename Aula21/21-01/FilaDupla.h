@@ -22,6 +22,8 @@ public:
   void adicionaCauda(double);
   double removeCauda();
   
+  void removeTudo();
+
   NoReal* getCabeca();
   NoReal* getCauda();
 

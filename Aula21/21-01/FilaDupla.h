@@ -23,6 +23,8 @@ public:
   double removeCauda();
   
   void removeTudo();
+  bool isVazia();
+  bool temApenasUmElemento();
 
   NoReal* getCabeca();
   NoReal* getCauda();

@@ -28,53 +28,59 @@ void testaNoReal();
 void imprimeMenu();
 
 int main () {
-  testaNoReal();
+  // testaNoReal();
 
-  // FilaDupla *fila = new FilaDupla();
+  FilaDupla *fila = new FilaDupla();
 
-  // int opcao = 0;
+  int opcao = 0;
 
-  // do {
-  //   // system("clear");
-  //   bool vaiSair = false;
+  do {
+
+    bool vaiSair = false;
     
-  //   imprimeMenu();
-  //   cin >> opcao;
+    imprimeMenu();
+    cin >> opcao;
+    system("clear");
+    int leitura = 0;
+    switch (opcao) {
+      case 1:
+        cout << "Inserir no inicio: ";
+        cin >> leitura;
+        fila->adicionaCabeca(leitura);
+      break;
+      case 2:
+        cout << "Inserir no final: ";
+        cin >> leitura;
+        fila->adicionaCauda(leitura);
+      break;
+      case 3:
+        cout << "Elemento removido: " << fila->removeCabeca() << endl;
+      break;
+      case 4:
+        cout << "Elemento removido: " << fila->removeCauda() << endl;
+      break;
+      case 5:
+        if (fila->isVazia()) {
+          cout << "Fila vazia!" << endl;
+        } else {
+          cout << "Fila atual: " << endl << *fila << endl;
+        }
+      break;
+      case 6:
+        fila->removeTudo();
+        cout << "Todos os elementos removidos!" << endl;
+      break;
+      case 7:
+        vaiSair = true;
+        break;
+      default:
+        cout << endl << "Opcao inválida, tente novamente." << endl << endl;
+    }
 
-  //   int leitura = 0;
-  //   switch (opcao) {
-  //     case 1:
-  //       cin >> leitura;
-  //       fila->adicionaCabeca(leitura);
-  //     break;
-  //     case 2:
-  //       cin >> leitura;
-  //       fila->adicionaCauda(leitura);
-  //     break;
-  //     case 3:
-  //       cout << "Elemento removido: " << fila->removeCabeca() << endl;
-  //     break;
-  //     case 4:
-  //       cout << "Elemento removido: " << fila->removeCauda() << endl;
-  //     break;
-  //     case 5:
-  //       cout << "Fila atual: " << *fila << endl;
-  //     break;
-  //     case 6:
-  //       fila->removeTudo();
-  //       cout << "Todos os elementos removidos" << endl;
-  //     break;
-  //     case 7:
-  //       vaiSair = true;
-  //       break;
-  //     default:
-  //       cout << endl << "Opcao inválida, tente novamente." << endl << endl;
-  //   }
+    if (vaiSair)
+      break;
 
-  //   if (vaiSair)
-  //     break;
-
-  // } while (opcao != 7);
+  } while (opcao != 7);
 
   return 0;
 }
@@ -117,4 +123,5 @@ void imprimeMenu() {
   cout << "(6) Remover todos os valores do deque" << endl;
   cout << "(7) Fim da execução do programa" << endl;
   cout << "Escolha uma opção: ";
+
 }

@@ -4,83 +4,103 @@ FilaDupla::FilaDupla(NoReal* cabeca, NoReal* cauda)
   : cabeca(cabeca), cauda(cauda) { }
 
 FilaDupla::~FilaDupla() {
-  NoReal * atual = cabeca;
-  while (atual) {
-    NoReal * proximo = atual->proximo;
-    delete cabeca;
-    atual = proximo;
+  NoReal * seraApagado = this->cabeca;
+  while (seraApagado) {
+    NoReal * proximo = seraApagado->getProximo();
+    delete seraApagado;
+    seraApagado = proximo;
   }
 }
 
 void FilaDupla::adicionaCabeca(double valor) {
-  NoReal *novaCabeca = new NoReal(valor,NULL,cabeca);
+  NoReal *novaCabeca = new NoReal(valor,NULL,this->cabeca);
 
-  if (cabeca) {
-    cabeca->anterior = novaCabeca;
+  if (temCabeca()) {
+    this->cabeca->setAnterior(novaCabeca);
   }
+  this->cabeca = novaCabeca;
+
   if (!temCauda()) {
-    cauda = cabeca;
+    this->cauda = this->cabeca;
   }
-  cabeca = novaCabeca;
 }
 
 double FilaDupla::removeCabeca() {
-  
+
   double retorno = 0.0;
-  if (temCabeca()) {
-    retorno = cabeca->valor;
+  if (!isVazia()) {
+    std::cout << std::endl << *getCabeca() << std::endl;
 
-    NoReal *seraApagado = cabeca;
-    if (cauda == cabeca) {
-      cabeca = NULL;
-      cauda = NULL;
+    retorno = *cabeca->getValor();
+    NoReal *seraApagado;
+    seraApagado = this->cabeca;
+
+    if (temApenasUmElemento()) {
+      this->cabeca = NULL;
+      this->cauda = NULL;
     } else {
-      cabeca = cabeca->proximo;
-      cabeca->anterior = NULL;
+      this->cabeca = this->cabeca->getProximo();
+      this->cabeca->setAnterior(NULL);
     }
-    delete seraApagado;
-  }
+    // Erro ocorre aqui
+    if (seraApagado) {
+      delete seraApagado;
+    }
 
+  }
   return retorno;
 }
 
 void FilaDupla::adicionaCauda(double valor) {
   NoReal *novaCauda = new NoReal(valor,cauda);
 
-  if (cauda) {
-    cauda->proximo = novaCauda;
+  if (temCauda()) {
+    this->cauda->setProximo(novaCauda);
   }
+  this->cauda = novaCauda;
+
   if (!temCabeca()) {
-    cabeca = cauda;
+    this->cabeca = this->cauda;
   }
-  cauda = novaCauda;
 }
 
 double FilaDupla::removeCauda() {
 
   double retorno = 0.0;
-  if (temCauda()) {
-    retorno = cauda->valor;
+  if (!isVazia()) {
+    std::cout << std::endl << *getCauda() << std::endl;
 
-    NoReal *seraApagado = cauda;
-    if (cauda == cabeca) {
-      cabeca = NULL;
-      cauda = NULL;
+    retorno = *this->cauda->getValor();
+
+    NoReal *seraApagado;
+    seraApagado = this->cauda;
+    if (temApenasUmElemento()) {
+      this->cabeca = NULL;
+      this->cauda = NULL;
     } else {
-      cauda = cauda->anterior;
-      cauda->proximo = NULL;
+      this->cauda = this->cauda->getAnterior();
+      this->cauda->setProximo(NULL);
     }
-
-    delete seraApagado;
+    if (seraApagado) {
+      delete seraApagado;
+    }
   }
 
   return retorno;
 }
 
 void FilaDupla::removeTudo() {
-  while (cabeca) {
+  while (this->cabeca) {
     removeCabeca();
   }
+}
+
+bool FilaDupla::isVazia() {
+  return !temCabeca() && !temCauda();
+}
+
+bool FilaDupla::temApenasUmElemento() {
+  return this->cabeca == this->cauda;
 }
 
 // Acesso aos ponteiros
@@ -94,11 +114,11 @@ NoReal* FilaDupla::getCauda() {
 
 // métodos privados
 bool FilaDupla::temCabeca() {
-  return (cabeca ? true : false);
+  return (this->cabeca ? true : false);
 }
 
 bool FilaDupla::temCauda() {
-  return (cauda ? true : false);
+  return (this->cauda ? true : false);
 }
 
 // Sobrecarga de operadores
@@ -107,8 +127,10 @@ std::ostream& operator << (std::ostream& os, FilaDupla& fila) {
   NoReal* atual = fila.getCabeca();
   if (atual) {
     do {
-      os << atual->valor << (atual->proximo ? " , " : "");
-      atual = atual->proximo;
+      os << *atual << std::endl;
+
+      // os << *atual->getValor() << (atual->getProximo() ? " , " : "");
+      atual = atual->getProximo();
     } while (atual);
   }
   return os;

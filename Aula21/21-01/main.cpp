@@ -28,53 +28,53 @@ void testaNoReal();
 void imprimeMenu();
 
 int main () {
-  // testaNoReal();
+  testaNoReal();
 
-  FilaDupla *fila = new FilaDupla();
+  // FilaDupla *fila = new FilaDupla();
 
-  int opcao = 0;
+  // int opcao = 0;
 
-  do {
-    // system("clear");
-    bool vaiSair = false;
+  // do {
+  //   // system("clear");
+  //   bool vaiSair = false;
     
-    imprimeMenu();
-    cin >> opcao;
+  //   imprimeMenu();
+  //   cin >> opcao;
 
-    int leitura = 0;
-    switch (opcao) {
-      case 1:
-        cin >> leitura;
-        fila->adicionaCabeca(leitura);
-      break;
-      case 2:
-        cin >> leitura;
-        fila->adicionaCauda(leitura);
-      break;
-      case 3:
-        cout << "Elemento removido: " << fila->removeCabeca() << endl;
-      break;
-      case 4:
-        cout << "Elemento removido: " << fila->removeCauda() << endl;
-      break;
-      case 5:
-        cout << "Fila atual: " << *fila << endl;
-      break;
-      case 6:
-        fila->removeTudo();
-        cout << "Todos os elementos removidos" << endl;
-      break;
-      case 7:
-        vaiSair = true;
-        break;
-      default:
-        cout << endl << "Opcao inválida, tente novamente." << endl << endl;
-    }
+  //   int leitura = 0;
+  //   switch (opcao) {
+  //     case 1:
+  //       cin >> leitura;
+  //       fila->adicionaCabeca(leitura);
+  //     break;
+  //     case 2:
+  //       cin >> leitura;
+  //       fila->adicionaCauda(leitura);
+  //     break;
+  //     case 3:
+  //       cout << "Elemento removido: " << fila->removeCabeca() << endl;
+  //     break;
+  //     case 4:
+  //       cout << "Elemento removido: " << fila->removeCauda() << endl;
+  //     break;
+  //     case 5:
+  //       cout << "Fila atual: " << *fila << endl;
+  //     break;
+  //     case 6:
+  //       fila->removeTudo();
+  //       cout << "Todos os elementos removidos" << endl;
+  //     break;
+  //     case 7:
+  //       vaiSair = true;
+  //       break;
+  //     default:
+  //       cout << endl << "Opcao inválida, tente novamente." << endl << endl;
+  //   }
 
-    if (vaiSair)
-      break;
+  //   if (vaiSair)
+  //     break;
 
-  } while (opcao != 7);
+  // } while (opcao != 7);
 
   return 0;
 }
@@ -84,14 +84,26 @@ void testaNoReal() {
   NoReal * terceiro = new NoReal(3);
   NoReal * segundo = new NoReal(2,primeiro,terceiro);
 
-  primeiro->proximo = segundo;
-  terceiro->anterior = segundo;
+  primeiro->setProximo(segundo);
+  terceiro->setAnterior(segundo);
+
+  double *teste1 = new double;
+  *teste1 = -9;
+  primeiro->setValor(teste1);
 
   std::cout << "Teste No Real: ";
   NoReal* atual = primeiro;
   while (atual) {
-    std::cout << atual->valor << (atual->proximo ? " - " : "\n");
-    atual = atual->proximo;
+    std::cout << "(" << atual << " : " << *atual << ")" 
+      << (atual->getProximo() ? " - " : "\n");
+    atual = atual->getProximo();
+  }
+
+  while (atual) {
+    NoReal *seraApagado = atual;
+    atual= atual->getAnterior();
+
+    delete seraApagado;
   }
 
 }

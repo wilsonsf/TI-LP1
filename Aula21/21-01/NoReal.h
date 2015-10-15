@@ -3,16 +3,25 @@
 #include <iostream>
 
 class NoReal {
-public:
-  double valor;
+private:
+  double *valor;
   NoReal *anterior;
   NoReal *proximo;
-  
-  NoReal(double valor = 0, NoReal* anterior = NULL, NoReal* proximo = NULL);
+public:
+  NoReal(double *valor = NULL, NoReal* anterior = NULL, NoReal* proximo = NULL);
+  NoReal(double valor, NoReal* anterior = NULL, NoReal* proximo = NULL);
   ~NoReal();
 
-  // friend std::ostream& operator << (std::ostream& os, NoReal& noReal);
+  double * getValor () const;
+  void setValor(double *);
 
+  NoReal * getAnterior() const;
+  void setAnterior(NoReal *);
+
+  NoReal * getProximo() const;
+  void setProximo(NoReal *);
+
+  friend std::ostream& operator << (std::ostream& os, const NoReal& noReal);
 };
 
 #endif

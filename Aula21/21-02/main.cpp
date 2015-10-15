@@ -9,6 +9,7 @@
 // Linha de compilação: g++ main.cpp NoChar.cpp FilaDupla.cpp -o teste
 
 #include <iostream>
+#include <cstring>
 #include "FilaDupla.h"
 // #include "NoChar.h"
 using namespace std;
@@ -25,31 +26,29 @@ int main () {
 }
 
 void testePalindromo() {
-  char palavra1[] = "RADAR";
-  char palavra2[] = "MIRIM";
-  char palavra3[] = "FALSO";
+  char entrada[256];
 
-  FilaDupla *fila1 = new FilaDupla();
-  FilaDupla *fila2 = new FilaDupla();
-  FilaDupla *fila3 = new FilaDupla();
+  while (true) {
+    cin >> entrada;
+    cout << "Entrada: " << entrada << endl;
+    cout << "Tamanho: " << (unsigned) strlen(entrada) << endl;
+    
+    FilaDupla *fila = new FilaDupla();
 
-  int tamanho = 0;
-  while ( tamanho < 5 ) {
-    fila1->adicionaCauda(palavra1[tamanho]);
-    fila2->adicionaCauda(palavra2[tamanho]);
-    fila3->adicionaCauda(palavra3[tamanho]);
+    int tamanho = strlen(entrada);
+    for (int pos = 0; pos < tamanho; pos++) {
+      fila->adicionaCauda(entrada[pos]);
+    }
 
-    tamanho ++;
+    cout << entrada << (ehPalindromo(*fila) ? "" : " nao" ) << " eh um palindromo!" << endl;
+    
+    if (!fila->isVazia())
+      fila->removeTudo();
+    
+    if (fila) {
+      delete fila;
+    }
   }
-
-  cout << palavra1 << (ehPalindromo(*fila1) ? "" : " nao" ) << " eh um palindromo!" << endl;
-  cout << palavra2 << (ehPalindromo(*fila2) ? "" : " nao" ) << " eh um palindromo!" << endl;
-  cout << palavra3 << (ehPalindromo(*fila3) ? "" : " nao" ) << " eh um palindromo!" << endl;
-
-  delete fila1;
-  delete fila2;
-  delete fila3;
-
 }
 
 bool ehPalindromo(FilaDupla &fila) {

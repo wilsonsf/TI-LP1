@@ -16,15 +16,12 @@
 // g++ main.cpp NoReal.cpp FilaDupla.cpp -o teste
 
 #include <iostream>
-#include <cstdlib>
+// #include <cstdlib>
 
 #include "FilaDupla.h"
-// #include "NoReal.h"
-
 using namespace std;
 
 void testaNoReal();
-
 void imprimeMenu();
 
 int main () {
@@ -33,14 +30,13 @@ int main () {
   FilaDupla *fila = new FilaDupla();
 
   int opcao = 0;
-
   do {
 
     bool vaiSair = false;
     
     imprimeMenu();
     cin >> opcao;
-    system("clear");
+
     int leitura = 0;
     switch (opcao) {
       case 1:
@@ -63,7 +59,7 @@ int main () {
         if (fila->isVazia()) {
           cout << "Fila vazia!" << endl;
         } else {
-          cout << "Fila atual: " << endl << *fila << endl;
+          cout << "Fila atual: " << *fila << endl;
         }
       break;
       case 6:
@@ -77,9 +73,12 @@ int main () {
         cout << endl << "Opcao inválida, tente novamente." << endl << endl;
     }
 
-    if (vaiSair)
+    if (vaiSair){
       break;
+    }
 
+    cout << endl;
+    
   } while (opcao != 7);
 
   return 0;
@@ -121,7 +120,7 @@ void imprimeMenu() {
   cout << "(4) Retirar um valor do final do deque" << endl;
   cout << "(5) Listar o conteúdo do deque na tela" << endl;
   cout << "(6) Remover todos os valores do deque" << endl;
-  cout << "(7) Fim da execução do programa" << endl;
+  cout << "(7) Fim da execução do programa" << endl << endl;
   cout << "Escolha uma opção: ";
 
 }

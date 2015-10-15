@@ -29,12 +29,9 @@ double FilaDupla::removeCabeca() {
 
   double retorno = 0.0;
   if (!isVazia()) {
-    std::cout << std::endl << *getCabeca() << std::endl;
-
     retorno = *cabeca->getValor();
-    NoReal *seraApagado;
-    seraApagado = this->cabeca;
-
+    
+    NoReal *seraApagado = this->cabeca;
     if (temApenasUmElemento()) {
       this->cabeca = NULL;
       this->cauda = NULL;
@@ -42,7 +39,6 @@ double FilaDupla::removeCabeca() {
       this->cabeca = this->cabeca->getProximo();
       this->cabeca->setAnterior(NULL);
     }
-    // Erro ocorre aqui
     if (seraApagado) {
       delete seraApagado;
     }
@@ -68,12 +64,9 @@ double FilaDupla::removeCauda() {
 
   double retorno = 0.0;
   if (!isVazia()) {
-    std::cout << std::endl << *getCauda() << std::endl;
-
     retorno = *this->cauda->getValor();
 
-    NoReal *seraApagado;
-    seraApagado = this->cauda;
+    NoReal *seraApagado = this->cauda;
     if (temApenasUmElemento()) {
       this->cabeca = NULL;
       this->cauda = NULL;
@@ -125,13 +118,9 @@ bool FilaDupla::temCauda() {
 std::ostream& operator << (std::ostream& os, FilaDupla& fila) {
 
   NoReal* atual = fila.getCabeca();
-  if (atual) {
-    do {
-      os << *atual << std::endl;
-
-      // os << *atual->getValor() << (atual->getProximo() ? " , " : "");
+  while (atual) {
+      os << *atual->getValor() << (atual->getProximo() ? " , " : "");
       atual = atual->getProximo();
-    } while (atual);
   }
   return os;
 }

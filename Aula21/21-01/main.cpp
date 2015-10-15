@@ -16,8 +16,6 @@
 // g++ main.cpp NoReal.cpp FilaDupla.cpp -o teste
 
 #include <iostream>
-// #include <cstdlib>
-
 #include "FilaDupla.h"
 using namespace std;
 
@@ -84,6 +82,18 @@ int main () {
   return 0;
 }
 
+void imprimeMenu() {
+  cout << "(1) Inserir um valor no início do deque" << endl;
+  cout << "(2) Inserir um valor no final do deque" << endl;
+  cout << "(3) Retirar um valor do início do deque" << endl;
+  cout << "(4) Retirar um valor do final do deque" << endl;
+  cout << "(5) Listar o conteúdo do deque na tela" << endl;
+  cout << "(6) Remover todos os valores do deque" << endl;
+  cout << "(7) Fim da execução do programa" << endl << endl;
+  cout << "Escolha uma opção: ";
+
+}
+
 void testaNoReal() {
   NoReal * primeiro = new NoReal(1);
   NoReal * terceiro = new NoReal(3);
@@ -110,17 +120,5 @@ void testaNoReal() {
 
     delete seraApagado;
   }
-
-}
-
-void imprimeMenu() {
-  cout << "(1) Inserir um valor no início do deque" << endl;
-  cout << "(2) Inserir um valor no final do deque" << endl;
-  cout << "(3) Retirar um valor do início do deque" << endl;
-  cout << "(4) Retirar um valor do final do deque" << endl;
-  cout << "(5) Listar o conteúdo do deque na tela" << endl;
-  cout << "(6) Remover todos os valores do deque" << endl;
-  cout << "(7) Fim da execução do programa" << endl << endl;
-  cout << "Escolha uma opção: ";
 
 }

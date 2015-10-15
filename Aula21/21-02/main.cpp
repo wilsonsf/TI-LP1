@@ -12,3 +12,20 @@ int main () {
 
   return 0;
 }
+
+/*
+   2 condicoes de parada
+   Numero de elementos pares resulta numa dequeue vazia no final
+   Numero de elementos ímpares, resulta e 1 ultimo elemento
+  
+  testa se está vazia
+    return true;
+  testa se tem apenas 1 elemento
+    return true;
+  senao remove os elementos das pontas e compara, se forem diferentes
+    return false;
+  se forem iguais
+    continue;
+
+
+*/

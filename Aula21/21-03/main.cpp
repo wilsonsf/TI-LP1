@@ -9,23 +9,34 @@
 
 #include <iostream>
 #include <cstring>
-
+#include "FilaDupla.h"
 using namespace std;
-int main () {
 
+int main () {
 
   char entrada[256];
   while (true) {
 
-    cin.getline(entrada,256);
+    FilaDupla *fila = new FilaDupla();
 
-    cout << entrada << endl;
-    for (int i = 0; i < strlen(entrada); i++) {
-      // Inserir os elementos na pilha
+    cin.getline(entrada,256);
+    // cout << entrada << endl;
+
+    int tamanho = strlen(entrada);
+    for (int pos = 0; pos < tamanho; pos++) {
+      fila->adicionaCauda(entrada[pos]);
     }
 
-    // chamar o teste de simetria a partir da estrutura de dados
-    cout << entrada << (true ? "" : " nao ") << " eh simetrico" << endl;
+    cout << "Fila: " << *fila << endl;
+
+    cout << entrada << ( fila->ehSimetrico() ? "" : " nao" ) << " eh simetrico" << endl;
+
+    if (!fila->isVazia()) {
+      fila->removeTudo();
+    }
+    if (fila) {
+      delete fila;
+    }
   }
 
   return 0;

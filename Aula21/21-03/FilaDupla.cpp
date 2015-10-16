@@ -96,6 +96,24 @@ bool FilaDupla::temApenasUmElemento() {
   return this->cabeca == this->cauda;
 }
 
+bool FilaDupla::ehSimetrico() {
+  while (!isVazia()) {
+    if (temApenasUmElemento()) {
+      return true;
+    }
+    else {
+      char esquerda = removeCabeca();
+      char direita = removeCauda();
+
+      if (esquerda != direita){
+        return false;
+      }
+    }
+
+  }
+  return true;
+}
+
 // Acesso aos ponteiros
 NoChar* FilaDupla::getCabeca() {
   return this->cabeca;

@@ -25,6 +25,8 @@ public:
   void removeTudo();
   bool isVazia();
   bool temApenasUmElemento();
+  bool ehSimetrico();
+
 
   NoChar* getCabeca();
   NoChar* getCauda();

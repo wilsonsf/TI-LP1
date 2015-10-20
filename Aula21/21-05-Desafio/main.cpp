@@ -17,9 +17,34 @@
   
 */
 
+// g++ -std=c++11 NoChar.cpp FilaDupla.cpp FilaVestibular.cpp main.cpp -o teste
+
 #include <iostream>
+#include "FilaVestibular.h"
+using namespace std;
+
+void preencheLista(FilaVestibular &);
 
 int main () {
 
+  FilaVestibular *listaCandidatos = new FilaVestibular();
+
+  preencheLista(*listaCandidatos);
+
+  cout << *listaCandidatos << endl;
+
   return 0;
+}
+
+void preencheLista(FilaVestibular &fila) {
+  fila.adicionaCauda("1 Primeiro Lugar");
+  fila.adicionaCauda("2 Segundo Lugar");
+  fila.adicionaCauda("3 Terceiro Lugar");
+  fila.adicionaCauda("4 Quarto Lugar");
+  fila.adicionaCauda("5 Quinto Lugar");
+  fila.adicionaCauda("6 Sexto Lugar");
+  fila.adicionaCauda("7 Setimo Lugar");
+  fila.adicionaCauda("8 Oitavo Lugar");
+  fila.adicionaCauda("9 Nono Lugar");
+  fila.adicionaCauda("10 Decimo Lugar");
 }

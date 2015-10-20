@@ -9,6 +9,8 @@ private:
   NoChar *cabeca;
   NoChar *cauda;
 
+  int quantidade;
+
   bool temCabeca();
   bool temCauda();
 public:
@@ -25,6 +27,7 @@ public:
   void removeTudo();
   bool isVazia();
   bool temApenasUmElemento();
+  int getNumeroDeElementos();
 
   NoChar* getCabeca();
   NoChar* getCauda();

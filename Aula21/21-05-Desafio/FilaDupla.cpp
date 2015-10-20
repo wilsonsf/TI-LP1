@@ -1,7 +1,10 @@
 #include "FilaDupla.h"
 
 FilaDupla::FilaDupla(NoChar* cabeca, NoChar* cauda) 
-  : cabeca(cabeca), cauda(cauda) { }
+  : cabeca(cabeca), cauda(cauda), quantidade(0) {
+    if (cabeca) this->quantidade++;
+    if (cauda) this->quantidade++;
+}
 
 FilaDupla::~FilaDupla() {
   NoChar * seraApagado = this->cabeca;
@@ -27,6 +30,8 @@ bool FilaDupla::adicionaCabeca(std::string valor) {
     if (!temCauda()) {
       this->cauda = this->cabeca;
     }
+
+    this->quantidade++;
     return true;
   }
 }
@@ -49,6 +54,7 @@ std::string FilaDupla::removeCabeca() {
       delete seraApagado;
     }
   }
+  this->quantidade--;
 
   return retorno;
 }
@@ -67,6 +73,8 @@ bool FilaDupla::adicionaCauda(std::string valor) {
     if (!temCabeca()) {
       this->cabeca = this->cauda;
     }
+    this->quantidade++;
+
     return true;
   }
 }
@@ -89,6 +97,7 @@ std::string FilaDupla::removeCauda() {
       delete seraApagado;
     }
   }
+  this->quantidade--;
 
   return retorno;
 }
@@ -104,7 +113,12 @@ bool FilaDupla::isVazia() {
 }
 
 bool FilaDupla::temApenasUmElemento() {
+  // return this->quantidade == 1;
   return this->cabeca == this->cauda;
+}
+
+int FilaDupla::getNumeroDeElementos() {
+  return this->quantidade;
 }
 
 // Acesso aos ponteiros
@@ -118,10 +132,12 @@ NoChar* FilaDupla::getCauda() {
 
 // métodos privados
 bool FilaDupla::temCabeca() {
+  // return this->quantidade > 0;
   return (this->cabeca ? true : false);
 }
 
 bool FilaDupla::temCauda() {
+  // return this->quantidade > 0;
   return (this->cauda ? true : false);
 }
 

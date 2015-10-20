@@ -8,24 +8,37 @@ enum : char // C++11
 };
 
 void FilaVestibular::exibe(int pos, char ordem) {
-  NoChar* atual = NULL;
-
+  NoChar* noAtual;
+  int indiceAtual;
   if (ordem == ORDEM_IMPRESSAO_INDIRETA) {
-    atual = this->getCauda();
+    noAtual = this->getCauda();
+    indiceAtual = this->getNumeroDeElementos()-1;
   } else {
-    atual = this->getCabeca();
+    noAtual = this->getCabeca();
+    indiceAtual = 0;
   }
 
-  while (atual) {
-    NoChar * proximo = NULL;
+  while (noAtual) {
+    
+
+    int incremento;
+    NoChar * proximo;
     switch(ordem) {
-      case ORDEM_IMPRESSAO_INDIRETA:  proximo = atual->getAnterior();
+      case ORDEM_IMPRESSAO_INDIRETA:  
+        proximo = noAtual->getAnterior();
+        incremento = -1;
       break;
-      case ORDEM_IMPRESSAO_DIRETA:    proximo = atual->getProximo();
+      case ORDEM_IMPRESSAO_DIRETA:    
+        proximo = noAtual->getProximo();
+        incremento = 1;
       break;
     }
 
-    std::cout << *atual->getValor() << (proximo ? ", " : "\n");
-    atual = proximo;
+    if (indiceAtual >= pos){
+      std::cout << *noAtual->getValor() << ( proximo ? ", " : "" );
+    }
+    indiceAtual += incremento;
+    noAtual = proximo;
   }
+  std::cout << std::endl;
 }

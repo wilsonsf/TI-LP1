@@ -17,9 +17,50 @@
   
 */
 
+// g++ -std=c++11 NoChar.cpp FilaDupla.cpp FilaVestibular.cpp main.cpp -o teste
+
 #include <iostream>
+#include "FilaVestibular.h"
+using namespace std;
+
+void preencheLista(FilaVestibular &);
 
 int main () {
 
+  FilaVestibular *listaCandidatos = new FilaVestibular();
+
+  preencheLista(*listaCandidatos);
+
+  cout << "Usando método exibe(0,'d')" << endl;
+  listaCandidatos->exibe(0,'d');
+
+  cout << endl << "Usando método exibe(0,'i')" << endl;
+  listaCandidatos->exibe(0,'i');
+
+  cout << endl << "Usando método exibe(3,'d')" << endl;
+  listaCandidatos->exibe(3,'d');
+
+  cout << endl << "Usando método exibe(5,'d')" << endl;
+  listaCandidatos->exibe(5,'d');
+
+  cout << endl << "Usando método exibe(3,'i')" << endl;
+  listaCandidatos->exibe(3,'i');
+
+  cout << endl << "Usando método exibe(5,'i')" << endl;
+  listaCandidatos->exibe(5,'i');
+
   return 0;
+}
+
+void preencheLista(FilaVestibular &fila) {
+  fila.adicionaCauda("0 Primeiro Lugar");
+  fila.adicionaCauda("1 Segundo Lugar");
+  fila.adicionaCauda("2 Terceiro Lugar");
+  fila.adicionaCauda("3 Quarto Lugar");
+  fila.adicionaCauda("4 Quinto Lugar");
+  fila.adicionaCauda("5 Sexto Lugar");
+  fila.adicionaCauda("6 Setimo Lugar");
+  fila.adicionaCauda("7 Oitavo Lugar");
+  fila.adicionaCauda("8 Nono Lugar");
+  fila.adicionaCauda("9 Decimo Lugar");
 }

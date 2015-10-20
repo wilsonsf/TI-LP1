@@ -11,7 +11,6 @@ O deque deve ser uma classe.
 
 #include <iostream>
 #include "FilaDupla.h"
-// #include "Nodo.h"
 using namespace std;
 
 void testaNodo();
@@ -19,7 +18,7 @@ void execucaoPrincipal();
 void imprimeMenu();
 
 int main () {
-  // testaNodo();
+  testaNodo();
 
   execucaoPrincipal();
 
@@ -29,6 +28,7 @@ int main () {
 void execucaoPrincipal() {
   FilaDupla<double> *fila = new FilaDupla<double>();
 
+  // Variável de controle
   int opcao = 0;
   do {
 
@@ -36,8 +36,10 @@ void execucaoPrincipal() {
     
     imprimeMenu();
     cin >> opcao;
+    
 
-    int leitura = 0;
+    // Variavel de entrada
+    double leitura;
     switch (opcao) {
       case 1:
         cout << "Inserir no inicio: ";

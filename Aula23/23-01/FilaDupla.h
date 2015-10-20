@@ -2,34 +2,38 @@
 #define _FILADUPLA_H_
 
 #include <iostream>
-#include "NoReal.h"
+#include "Nodo.h"
 
+template <class T>
 class FilaDupla {
 private:
-  NoReal *cabeca;
-  NoReal *cauda;
+  int comprimento;
+  Nodo<T> *cabeca;
+  Nodo<T> *cauda;
 
   bool temCabeca();
   bool temCauda();
 public:
 
-  FilaDupla(NoReal* cabeca = NULL, NoReal* cauda = NULL);
+  FilaDupla(Nodo<T>* cabeca = NULL, Nodo<T>* cauda = NULL);
   ~FilaDupla();
 
-  void adicionaCabeca(double);
-  double removeCabeca();
+  bool adicionaCabeca(T);
+  T removeCabeca();
   
-  void adicionaCauda(double);
-  double removeCauda();
+  bool adicionaCauda(T);
+  T removeCauda();
   
   void removeTudo();
   bool isVazia();
   bool temApenasUmElemento();
 
-  NoReal* getCabeca();
-  NoReal* getCauda();
+  Nodo<T>* getCabeca();
+  Nodo<T>* getCauda();
 
-  friend std::ostream& operator << (std::ostream& os, FilaDupla& fila);
+  template <class U>
+  friend std::ostream& operator << (std::ostream&, FilaDupla<T>&);
 };
 
+#include "FilaDupla.inl"
 #endif

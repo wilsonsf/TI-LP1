@@ -10,8 +10,8 @@ O deque deve ser uma classe.
 // g++ main.cpp -o teste
 
 #include <iostream>
-// #include "FilaDupla.h"
-#include "Nodo.h"
+#include "FilaDupla.h"
+// #include "Nodo.h"
 using namespace std;
 
 void testaNodo();
@@ -19,7 +19,7 @@ void testaNodo();
 void imprimeMenu();
 
 int main () {
-  testaNodo();
+  // testaNodo();
 
   // execucaoPrincipal();
 

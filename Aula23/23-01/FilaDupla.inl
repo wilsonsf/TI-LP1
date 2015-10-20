@@ -1,37 +1,44 @@
-#include "FilaDupla.h"
+template <class T>
+FilaDupla<T>::FilaDupla(Nodo<T>* cabeca, Nodo<T>* cauda) 
+  : cabeca(cabeca), cauda(cauda), comprimento(0){ }
 
-FilaDupla::FilaDupla(NoReal* cabeca, NoReal* cauda) 
-  : cabeca(cabeca), cauda(cauda) { }
-
-FilaDupla::~FilaDupla() {
-  NoReal * seraApagado = this->cabeca;
+template <class T>
+FilaDupla<T>::~FilaDupla() {
+  Nodo<T> * seraApagado = this->cabeca;
   while (seraApagado) {
-    NoReal * proximo = seraApagado->getProximo();
+    Nodo<T> * proximo = seraApagado->getProximo();
     delete seraApagado;
     seraApagado = proximo;
   }
 }
 
-void FilaDupla::adicionaCabeca(double valor) {
-  NoReal *novaCabeca = new NoReal(valor,NULL,this->cabeca);
+template <class T>
+bool FilaDupla<T>::adicionaCabeca(T valor) {
+  Nodo<T> *novaCabeca = new Nodo<T>(valor,NULL,this->cabeca);
 
-  if (temCabeca()) {
-    this->cabeca->setAnterior(novaCabeca);
-  }
-  this->cabeca = novaCabeca;
+  if (!novaCabeca) {
+    return false;
+  } else {
+    if (temCabeca()) {
+      this->cabeca->setAnterior(novaCabeca);
+    }
+    this->cabeca = novaCabeca;
 
-  if (!temCauda()) {
-    this->cauda = this->cabeca;
+    if (!temCauda()) {
+      this->cauda = this->cabeca;
+    }
+    return true;
   }
 }
 
-double FilaDupla::removeCabeca() {
+template <class T>
+T FilaDupla<T>::removeCabeca() {
 
-  double retorno = 0.0;
+  T retorno;
   if (!isVazia()) {
     retorno = *cabeca->getValor();
     
-    NoReal *seraApagado = this->cabeca;
+    Nodo<T> *seraApagado = this->cabeca;
     if (temApenasUmElemento()) {
       this->cabeca = NULL;
       this->cauda = NULL;
@@ -42,31 +49,36 @@ double FilaDupla::removeCabeca() {
     if (seraApagado) {
       delete seraApagado;
     }
-
   }
   return retorno;
 }
 
-void FilaDupla::adicionaCauda(double valor) {
-  NoReal *novaCauda = new NoReal(valor,cauda);
+template <class T>
+bool FilaDupla<T>::adicionaCauda(T valor) {
+  Nodo<T> *novaCauda = new Nodo<T>(valor,cauda);
+  if (!novaCauda) {
+    return false;
+  } else {
+    if (temCauda()) {
+      this->cauda->setProximo(novaCauda);
+    }
+    this->cauda = novaCauda;
 
-  if (temCauda()) {
-    this->cauda->setProximo(novaCauda);
-  }
-  this->cauda = novaCauda;
-
-  if (!temCabeca()) {
-    this->cabeca = this->cauda;
+    if (!temCabeca()) {
+      this->cabeca = this->cauda;
+    }
+    return true;
   }
 }
 
-double FilaDupla::removeCauda() {
+template <class T>
+T FilaDupla<T>::removeCauda() {
 
-  double retorno = 0.0;
+  T retorno;
   if (!isVazia()) {
     retorno = *this->cauda->getValor();
 
-    NoReal *seraApagado = this->cauda;
+    Nodo<T> *seraApagado = this->cauda;
     if (temApenasUmElemento()) {
       this->cabeca = NULL;
       this->cauda = NULL;
@@ -82,42 +94,50 @@ double FilaDupla::removeCauda() {
   return retorno;
 }
 
-void FilaDupla::removeTudo() {
+template <class T>
+void FilaDupla<T>::removeTudo() {
   while (this->cabeca) {
     removeCabeca();
   }
 }
 
-bool FilaDupla::isVazia() {
+template <class T>
+bool FilaDupla<T>::isVazia() {
   return !temCabeca() && !temCauda();
 }
 
-bool FilaDupla::temApenasUmElemento() {
+template <class T>
+bool FilaDupla<T>::temApenasUmElemento() {
   return this->cabeca == this->cauda;
 }
 
 // Acesso aos ponteiros
-NoReal* FilaDupla::getCabeca() {
+template <class T>
+Nodo<T>* FilaDupla<T>::getCabeca() {
   return this->cabeca;
 }
 
-NoReal* FilaDupla::getCauda() {
+template <class T>
+Nodo<T>* FilaDupla<T>::getCauda() {
   return this->cauda;
 }
 
 // métodos privados
-bool FilaDupla::temCabeca() {
+template <class T>
+bool FilaDupla<T>::temCabeca() {
   return (this->cabeca ? true : false);
 }
 
-bool FilaDupla::temCauda() {
+template <class T>
+bool FilaDupla<T>::temCauda() {
   return (this->cauda ? true : false);
 }
 
 // Sobrecarga de operadores
-std::ostream& operator << (std::ostream& os, FilaDupla& fila) {
+template <class T>
+std::ostream& operator << (std::ostream& os, FilaDupla<T>& fila) {
 
-  NoReal* atual = fila.getCabeca();
+  Nodo<T>* atual = fila.getCabeca();
   while (atual) {
       os << *atual->getValor() << (atual->getProximo() ? " , " : "");
       atual = atual->getProximo();

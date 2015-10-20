@@ -15,19 +15,19 @@ O deque deve ser uma classe.
 using namespace std;
 
 void testaNodo();
-// void execucaoPrincipal();
+void execucaoPrincipal();
 void imprimeMenu();
 
 int main () {
   // testaNodo();
 
-  // execucaoPrincipal();
+  execucaoPrincipal();
 
   return 0;
 }
-/*
+
 void execucaoPrincipal() {
-  FilaDupla *fila = new FilaDupla();
+  FilaDupla<double> *fila = new FilaDupla<double>();
 
   int opcao = 0;
   do {
@@ -81,7 +81,7 @@ void execucaoPrincipal() {
     
   } while (opcao != 7);
 }
-*/
+
 
 void imprimeMenu() {
   cout << "(1) Inserir um valor no início do deque" << endl;

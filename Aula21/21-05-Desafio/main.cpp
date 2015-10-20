@@ -31,7 +31,10 @@ int main () {
 
   preencheLista(*listaCandidatos);
 
-  cout << *listaCandidatos << endl;
+  // cout << *listaCandidatos << endl;
+  cout << "Usando método exibe sem argumentos" << endl;
+  listaCandidatos->exibe();
+
 
   return 0;
 }

@@ -34,28 +34,39 @@ int testaNodo () {
 }
 
 void testaNodoInteiro() {
-  // Quando usa template da própria classe
-  // A primeira alocação/inicialização não está funcionando, por que?
   Nodo<int> *ultimoNodo = new Nodo<int>(9);
-  cout << "Ultimo: " << ultimoNodo << endl;
-  Nodo<int> *segundoNodo = new Nodo<int>(5
-                                  // ,ultimoNodo
-                                  );
+  Nodo<int> *segundoNodo = new Nodo<int>(5);
   Nodo<int> *primeiroNodo = new Nodo<int>(1);
-  // primeiroNodo->setProximo(segundoNodo);
 
-  cout << "Testando método imprime(): ";
-  primeiroNodo->imprime();
-  cout << endl;
+  primeiroNodo->setProximo(segundoNodo);
 
   cout << "Testa overload: ";
   cout << *primeiroNodo;
-  cout << " | " << *segundoNodo; 
+  cout << " | " << *segundoNodo;
   cout << " | " << *ultimoNodo;
   cout << endl;
 
-  if (primeiroNodo)
+  Nodo<int> *novoNodoCopia1 = segundoNodo;
+  Nodo<int> *novoNodoCopia2 = new Nodo<int>(*segundoNodo);
+
+  cout << "Teste construtor de copia1: " << *novoNodoCopia1 << endl;
+  cout << "Teste construtor de copia2: " << *novoNodoCopia2 << endl;
+
+  if (primeiroNodo) {
     delete primeiroNodo;
+  }
+  if (segundoNodo) {
+    delete segundoNodo;
+  }
+  if (ultimoNodo) {
+    delete ultimoNodo;
+  }
+  if (novoNodoCopia1) {
+    delete novoNodoCopia1;
+  }
+  if (novoNodoCopia2) {
+    delete novoNodoCopia2;
+  }
 
 }
 

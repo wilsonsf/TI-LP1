@@ -11,6 +11,7 @@ private:
 public:
   Nodo(T *valor = NULL, Nodo<T>* anterior = NULL, Nodo<T>* proximo = NULL);
   Nodo(T valor, Nodo<T>* anterior = NULL, Nodo<T>* proximo = NULL);
+  Nodo(const Nodo<T>&);
   ~Nodo();
 
   T * getValor () const;

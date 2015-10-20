@@ -11,6 +11,12 @@ Nodo<T>::Nodo(T valor, Nodo<T>* anterior, Nodo<T>* proximo)
 }
 
 template <class T>
+Nodo<T>::Nodo(const Nodo<T>& copia) : anterior(NULL), proximo(NULL) {
+  this->valor = new T;
+  *this->valor = *copia.getValor();
+}
+
+template <class T>
 Nodo<T>::~Nodo() {
   // std::cout << "Será apagado: " << std::endl << *this << std::endl;
   if (this->valor) {
@@ -75,6 +81,6 @@ std::ostream& operator << (std::ostream& os, const Nodo<T>& nodo) {
   os << "Anterior : " << nodo.getAnterior() << std::endl;
   os << "Proximo : " << nodo.getProximo() << std::endl;
   */
-  
+
   return os;
 }

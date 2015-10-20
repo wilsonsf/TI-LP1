@@ -23,7 +23,7 @@ public:
   void setProximo(Nodo<T> *);
 
   template <class U>
-  friend std::ostream& operator << (std::ostream& os, const Nodo<U>& noReal);
+  friend std::ostream& operator << (std::ostream&, const Nodo<T>&);
 };
 
 #include "Nodo.inl"

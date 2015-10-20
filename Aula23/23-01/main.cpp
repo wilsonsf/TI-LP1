@@ -7,6 +7,8 @@ O deque deve ser uma classe.
 
 */
 
+// g++ main.cpp -o teste
+
 #include <iostream>
 // #include "FilaDupla.h"
 #include "Nodo.h"

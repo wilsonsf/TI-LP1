@@ -18,19 +18,14 @@ Nodo<T>::Nodo(const Nodo<T>& copia) : anterior(NULL), proximo(NULL) {
 
 template <class T>
 Nodo<T>::~Nodo() {
-  // std::cout << "Será apagado: " << std::endl << *this << std::endl;
   if (this->valor) {
     delete valor;
     this->valor = NULL;
   }
-
   if (this->anterior) {
-    // delete anterior;
     this->anterior = NULL;
   }
-
   if (proximo) {
-    // delete proximo;
     this->proximo = NULL;
   }
 }

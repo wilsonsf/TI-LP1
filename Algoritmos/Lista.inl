@@ -1,62 +1,107 @@
 template <class T>
 Lista<T>::Lista() {
-    this->primeiro = NULL;
-    this->ultimo = NULL;
+  this->primeiro = NULL;
+  this->ultimo = NULL;
 }
 
 template <class T>
 Lista<T>::~Lista() {
-    if (this->primeiro) {
-        delete this->primeiro;
-        this->primeiro = NULL;
-    }
+  Nodo<T> *atual = this->primeiro;
+  while (atual) {
+    Nodo<T> *proximo = atual->getProximo();
 
-    if (this->ultimo) {
-        delete this->ultimo;
-        this->ultimo = NULL;
+    if (atual){
+      delete atual;
     }
+    atual = proximo;
+  }
 }
 
 template <class T>
 bool Lista<T>::adiciona(T valor) {
-    try {
-        if (!this->primeiro) {
-            this->primeiro = new Nodo<T> (valor);
-            this->ultimo = this->primeiro;
-        } else {
-            Nodo<T> *novo = new Nodo<T> (valor);
-            ultimo->setProximo(novo);
-            this->ultimo = novo;
-        }
-        return true;
+  try {
+    if (!this->primeiro) {
+      this->primeiro = new Nodo<T> (valor);
+      this->ultimo = this->primeiro;
+    } else {
+      Nodo<T> *novo = new Nodo<T> (valor);
+      ultimo->setProximo(novo);
+      this->ultimo = novo;
     }
-    catch (...) {
-        return false;
-    }
+    this->comprimento++;
+    return true;
+  }
+  catch (...) {
     return false;
+  }
+  return false;
 }
 
 template <class T>
-T Lista<T>::getPrimeiro() const{
-    return this->primeiro;
+bool Lista<T>::remove(T valor) {
+  try {
+    if (isVazia()) {
+      return false;
+    } else {
+      Nodo<T>* atual = this->primeiro;
+      while (atual) {
+        if (*atual->getValor() == valor) {
+          if (atual->getAnterior()) {
+            atual->getAnterior()->setProximo(atual->getProximo());
+          }
+          if (atual->getProximo()) {
+            atual->getProximo()->setAnterior(atual->getAnterior());
+          }
+          this->comprimento--;
+          delete atual;
+
+          return true;
+        }
+      }
+    }
+  } catch (...) {
+    return false;
+  }
+  return false;
 }
 
 template <class T>
-void Lista<T>::setPrimeiro (T primeiro) {
-    this->primeiro = primeiro;
+int Lista<T>::getTamanho() const {
+  return this->comprimento;
 }
 
 template <class T>
-T Lista<T>::getUltimo() const{
-    return this->ultimo;
+bool Lista<T>::isVazia() const {
+  return getTamanho() == 0;
 }
 
 template <class T>
-void Lista<T>::setUltimo (T ultimo) {
-    this->ultimo = ultimo;
+Nodo<T>* Lista<T>::getPrimeiro() const{
+  return this->primeiro;
 }
 
 template <class T>
-void Lista<T>::imprime() const {
-    this->primeiro->imprime();
+void Lista<T>::setPrimeiro (Nodo<T>* primeiro) {
+  this->primeiro = primeiro;
+}
+
+template <class T>
+Nodo<T>* Lista<T>::getUltimo() const{
+  return this->ultimo;
+}
+
+template <class T>
+void Lista<T>::setUltimo (Nodo<T>* ultimo) {
+  this->ultimo = ultimo;
+}
+
+template <class T>
+std::ostream& operator << (std::ostream& os, const Lista<T>& lista) {
+  Nodo<T> * atual = lista.getPrimeiro();
+  while (atual) {
+    os << *atual->getValor() << ( atual->getProximo() ? ", " : "" );
+    atual = atual->getProximo();
+  }
+
+  return os;
 }

@@ -1,9 +1,10 @@
 #include <iostream>
 #include "Lista.h"
-
+using namespace std;
 
 int testaLista ();
 void testaListaInteiro();
+void testaListaChar();
 
 int main () {
     return testaLista();
@@ -11,12 +12,13 @@ int main () {
 
 int testaLista () {
     testaListaInteiro();
+    testaListaChar();
 
     return 0;
 }
 
 void testaListaInteiro() {
-    std::cout << "Testando lista de inteiros: " << std::endl;
+    cout << "Testando lista de inteiros: " << endl;
     Lista<int> *lista = new Lista<int>();
     lista->adiciona(1);
     lista->adiciona(4);
@@ -24,6 +26,23 @@ void testaListaInteiro() {
     lista->adiciona(2);
 
 
-    std::cout << "Lista: "  << lista << std::endl;
-    lista->imprime();
+    cout << "Lista: "  << lista << endl;
+    cout << *lista << endl;
+
+
+    delete lista;
+
+}
+
+void testaListaChar() {
+    int alfabeto = 65;
+
+    Lista<char> *lista = new Lista<char>();
+
+    while (alfabeto <= 90) {
+        lista->adiciona((char) alfabeto);
+        alfabeto++;
+    }
+
+    cout << "Lista do alfabeto\n" << *lista << endl;
 }

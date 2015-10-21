@@ -6,21 +6,26 @@
 template <class T>
 class Lista {
 private:
-    Nodo<T> * primeiro;
-    Nodo<T> * ultimo;
+  int comprimento;
+  Nodo<T> * primeiro;
+  Nodo<T> * ultimo;
 public:
-    Lista();
-    ~Lista();
+  Lista();
+  ~Lista();
 
-    bool adiciona(T);
-    void imprime() const;
+  bool adiciona(T);
+  bool remove(T);
 
-    T getPrimeiro() const;
-    void setPrimeiro(T);
-    T getUltimo() const;
-    void setUltimo(T);
+  int getTamanho() const;
+  bool isVazia() const;
 
-    std::ostream& operator<<(std::ostream& os, const T& obj);
+  Nodo<T>* getPrimeiro() const;
+  void setPrimeiro(Nodo<T>*);
+  Nodo<T>* getUltimo() const;
+  void setUltimo(Nodo<T>*);
+
+  template <class U>
+  friend std::ostream& operator<<(std::ostream&, const Lista<T>&);
 };
 
 #include "Lista.inl"

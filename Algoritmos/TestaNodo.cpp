@@ -34,28 +34,39 @@ int testaNodo () {
 }
 
 void testaNodoInteiro() {
-  // Quando usa template da própria classe
-  // A primeira alocação/inicialização não está funcionando, por que?
   Nodo<int> *ultimoNodo = new Nodo<int>(9);
-  cout << "Ultimo: " << ultimoNodo << endl;
-  Nodo<int> *segundoNodo = new Nodo<int>(5
-                                  // ,ultimoNodo
-                                  );
+  Nodo<int> *segundoNodo = new Nodo<int>(5);
   Nodo<int> *primeiroNodo = new Nodo<int>(1);
-  // primeiroNodo->setProximo(segundoNodo);
 
-  cout << "Testando método imprime(): ";
-  primeiroNodo->imprime();
-  cout << endl;
+  primeiroNodo->setProximo(segundoNodo);
 
-  cout << "Testa overload: ";
   cout << *primeiroNodo;
-  cout << " | " << *segundoNodo; 
-  cout << " | " << *ultimoNodo;
+  cout << " | \n" << *segundoNodo;
+  cout << " | \n" << *ultimoNodo;
   cout << endl;
 
-  if (primeiroNodo)
+  Nodo<int> novoNodoCopia1 = *segundoNodo;
+  Nodo<int> *novoNodoCopia2 = new Nodo<int>(*segundoNodo);
+  Nodo<int> novaCopia3 = novoNodoCopia1;
+  Nodo<int> novaCopia4(novaCopia3);
+
+  cout << "Teste construtor de copia 1: " << endl << novoNodoCopia1 << endl;
+  cout << "Teste construtor de copia 2: " << endl << *novoNodoCopia2 << endl;
+  cout << "Teste construtor de copia 3: " << endl << novaCopia3 << endl;
+  cout << "Teste construtor de copia 4: " << endl << novaCopia4 << endl;
+
+  if (primeiroNodo) {
     delete primeiroNodo;
+  }
+  if (segundoNodo) {
+    delete segundoNodo;
+  }
+  if (ultimoNodo) {
+    delete ultimoNodo;
+  }
+  if (novoNodoCopia2) {
+    delete novoNodoCopia2;
+  }
 
 }
 

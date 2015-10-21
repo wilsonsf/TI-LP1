@@ -1,8 +1,5 @@
 template <class T>
-Lista<T>::Lista() {
-  this->primeiro = NULL;
-  this->ultimo = NULL;
-}
+Lista<T>::Lista() : primeiro(NULL), ultimo(NULL), comprimento(0) { }
 
 template <class T>
 Lista<T>::~Lista() {
@@ -15,6 +12,16 @@ Lista<T>::~Lista() {
     }
     atual = proximo;
   }
+}
+
+template <class T>
+Lista<T>::Lista(const Lista<T>& copia) : primeiro(NULL), ultimo(NULL), comprimento(0) {
+  Nodo<T> *atual = copia.getPrimeiro();
+  while (atual) {
+    this->adiciona(*atual->getValor());
+    atual = atual->getProximo();
+  }
+  atual = NULL;
 }
 
 template <class T>

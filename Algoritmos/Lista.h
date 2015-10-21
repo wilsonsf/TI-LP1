@@ -11,7 +11,9 @@ private:
   Nodo<T> * ultimo;
 public:
   Lista();
+  Lista(const Lista<T>&);
   ~Lista();
+
 
   bool adiciona(T);
   bool remove(T);

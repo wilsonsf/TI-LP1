@@ -18,6 +18,7 @@ Nodo<T>::Nodo(const Nodo<T>& copia) : anterior(NULL), proximo(NULL) {
 
 template <class T>
 Nodo<T>::~Nodo() {
+  // std::cout << "Liberando" << std::endl << *this << std::endl;
   if (this->valor) {
     delete valor;
     this->valor = NULL;

@@ -40,17 +40,20 @@ void testaNodoInteiro() {
 
   primeiroNodo->setProximo(segundoNodo);
 
-  cout << "Testa overload: ";
   cout << *primeiroNodo;
-  cout << " | " << *segundoNodo;
-  cout << " | " << *ultimoNodo;
+  cout << " | \n" << *segundoNodo;
+  cout << " | \n" << *ultimoNodo;
   cout << endl;
 
-  Nodo<int> *novoNodoCopia1 = segundoNodo;
+  Nodo<int> novoNodoCopia1 = *segundoNodo;
   Nodo<int> *novoNodoCopia2 = new Nodo<int>(*segundoNodo);
+  Nodo<int> novaCopia3 = novoNodoCopia1;
+  Nodo<int> novaCopia4(novaCopia3);
 
-  cout << "Teste construtor de copia1: " << *novoNodoCopia1 << endl;
-  cout << "Teste construtor de copia2: " << *novoNodoCopia2 << endl;
+  cout << "Teste construtor de copia 1: " << endl << novoNodoCopia1 << endl;
+  cout << "Teste construtor de copia 2: " << endl << *novoNodoCopia2 << endl;
+  cout << "Teste construtor de copia 3: " << endl << novaCopia3 << endl;
+  cout << "Teste construtor de copia 4: " << endl << novaCopia4 << endl;
 
   if (primeiroNodo) {
     delete primeiroNodo;
@@ -60,9 +63,6 @@ void testaNodoInteiro() {
   }
   if (ultimoNodo) {
     delete ultimoNodo;
-  }
-  if (novoNodoCopia1) {
-    delete novoNodoCopia1;
   }
   if (novoNodoCopia2) {
     delete novoNodoCopia2;

@@ -2,30 +2,24 @@
 #define _NODO_H_
 
 #include <iostream>
-using namespace std;
 
-template <class T>
 class Nodo {
 private:
-  T* conteudo;
+  int* valor;
   Nodo *proximo;
 
-public: 
-  Nodo(T* conteudo = NULL, Nodo<T> *proximo = NULL);
-  Nodo(T conteudo, Nodo<T> * proximo = NULL);
+public:
+  Nodo(int* valor = NULL);
+  Nodo(int valor = 0);
   ~Nodo();
 
-  void imprime() const;
-
-  T* getConteudo() const;
-  void setConteudo (T);
+  int* getValor() const;
+  void setValor (int);
 
   Nodo * getProximo() const;
-  void setProximo(Nodo<T> *);
+  void setProximo(Nodo *);
 
-  template <class U>
-  friend ostream& operator << (ostream& os, const Nodo<U>& nodo);
+  friend std::ostream& operator << (std::ostream&, const Nodo&);
 };
 
-#include "Nodo.inl"
 #endif

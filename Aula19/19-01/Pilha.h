@@ -3,21 +3,21 @@
 
 #include "Nodo.h"
 
-template <class T>
 class Pilha {
 private:
-  Nodo<T> *topo;
+  int comprimento;
+  Nodo *topo;
 
 public:
   Pilha();
   ~Pilha();
   
-  bool push (T);
-  T pop();
+  bool push (int);
+  int pop();
 
-  void imprime();
-  T getTopo();
+  Nodo* getTopo();
+
+  friend std::ostream& operator << (std::ostream&, Pilha&);
 };
 
-#include "Pilha.inl"
 #endif

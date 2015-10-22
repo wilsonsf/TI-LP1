@@ -1,11 +1,15 @@
 /*
-    Considere uma pilha em alocação encadeada sem cabeça. Escreva métodos para 
-    empilhar um elemento na pilha e desempilhar um elemento da pilha.
+
+Considere uma pilha em alocação encadeada sem cabeça. Escreva métodos para 
+empilhar um elemento na pilha e desempilhar um elemento da pilha.
+
 */
-// Linha de compilação: g++ main.cpp -o teste
+// Linha de compilação: g++ Pilha.cpp Nodo.cpp main.cpp -o teste
 
 #include <iostream>
 #include "Pilha.h"
+using std::cout;
+using std::endl;
 
 void testaPilha();
 
@@ -17,7 +21,7 @@ int main () {
 }
 
 void testaPilha() {
-    Pilha<int> *pilha = new Pilha<int>();
+    Pilha *pilha = new Pilha();
 
     pilha->push(1);
     pilha->push(2);
@@ -25,14 +29,14 @@ void testaPilha() {
     pilha->push(4);
     pilha->push(5);
 
-    pilha->imprime();
+    cout << *pilha << endl;
 
-    std::cout << "Removido: " << pilha->pop() << std::endl;
+    cout << "Removido: " << pilha->pop() << endl;
  
-    pilha->imprime();
+    cout << *pilha << endl;
 
-    std::cout << "Removido: " << pilha->pop() << std::endl;
+    cout << "Removido: " << pilha->pop() << endl;
  
-    pilha->imprime();
+    cout << *pilha << endl;
 
 }

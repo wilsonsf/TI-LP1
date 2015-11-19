@@ -5,17 +5,16 @@
 template <class T>
 class Nodo {
 private:
-  T *valor;
+  T* valor;
   Nodo<T> *anterior;
   Nodo<T> *proximo;
 public:
-  Nodo(T *valor = NULL, Nodo<T>* anterior = NULL, Nodo<T>* proximo = NULL);
-  Nodo(T valor, Nodo<T>* anterior = NULL, Nodo<T>* proximo = NULL);
+  Nodo();
   Nodo(const Nodo<T>&);
   ~Nodo();
 
-  T * getValor () const;
-  void setValor(T *);
+  T* getValor () const;
+  void setValor(T*);
 
   Nodo<T> * getAnterior() const;
   void setAnterior(Nodo<T> *);

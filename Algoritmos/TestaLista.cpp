@@ -47,7 +47,7 @@ void testaListaChar() {
   cout << "Lista do alfabeto\n" << *lista << endl;
   Nodo<char> *atual = lista->getPrimeiro();
   while (atual) {
-    cout << atual << (atual->getProximo() ? " - ": "\n");
+    cout << *atual << (atual->getProximo() ? " - ": "\n");
     atual = atual->getProximo();
   }
 
@@ -58,7 +58,7 @@ void testaListaChar() {
 
   atual = copia->getPrimeiro();
   while (atual) {
-    cout << atual << (atual->getProximo() ? " - ": "\n");
+    cout << *atual << (atual->getProximo() ? " - ": "\n");
     atual = atual->getProximo();
   }
 

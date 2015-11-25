@@ -28,10 +28,12 @@ template <class T>
 bool Lista<T>::adiciona(T valor) {
   try {
     if (!this->primeiro) {
-      this->primeiro = new Nodo<T> (valor);
+      this->primeiro = new Nodo<T> ();
+      this->primeiro->setValor(new T(valor));
       this->ultimo = this->primeiro;
     } else {
-      Nodo<T> *novo = new Nodo<T> (valor);
+      Nodo<T> *novo = new Nodo<T>();
+      novo->setValor(new T(valor));
       ultimo->setProximo(novo);
       this->ultimo = novo;
     }

@@ -1,14 +1,5 @@
 template <class T>
-Nodo<T>::Nodo(T *valor, Nodo<T>* anterior, Nodo<T>* proximo)
-  : valor(valor), anterior(anterior), proximo(proximo) { }
-
-template <class T>
-Nodo<T>::Nodo(T valor, Nodo<T>* anterior, Nodo<T>* proximo)
-  : anterior(anterior), proximo(proximo) { 
-  this->valor = new T;
-  *this->valor = valor;
-
-}
+Nodo<T>::Nodo() : valor(NULL), anterior(NULL), proximo(NULL) { }
 
 template <class T>
 Nodo<T>::Nodo(const Nodo<T>& copia) : anterior(NULL), proximo(NULL) {
@@ -68,7 +59,8 @@ void Nodo<T>::setProximo(Nodo *proximo) {
 // Sobrecarga de operadores
 template <class T>
 std::ostream& operator << (std::ostream& os, const Nodo<T>& nodo) {
-  os << *nodo.getValor();
+  if (nodo.getValor() != NULL)
+    os << *nodo.getValor();
 
   // Impressão para debug
   /*
